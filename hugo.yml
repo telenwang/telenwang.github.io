@@ -1,7 +1,6 @@
 baseURL: "https://telenwang.github.io"
 languageCode: "en-gb"
 title: "Telen's Blog"
-paginate: 5
 theme: "PaperMod"
 
 enableInlineShortcodes: true
