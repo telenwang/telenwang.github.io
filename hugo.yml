@@ -37,7 +37,7 @@ languages:
           weight: 10
 
   profileMode:
-    enabled: true
+    enabled: false
     title: PaperMod
     imageUrl: "#"
     imageTitle: my image
