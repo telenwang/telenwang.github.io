@@ -48,3 +48,20 @@ minify:
         url: archives
       - name: Tags
         url: tags
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+
+
+  homeInfoParams:
+    Title: "Hej/你好."
+    Content: >
+      Welcom to my blog!
+
+  socialIcons:
+    - name: LinkedIn
+      title: Check My LinkedIn
+      url: "https://www.linkedin.com/in/telenwang"
+    - name: WeChat
+      title: Check My Wechat channel
+      url: "https://mp.weixin.qq.com/?lang=en_US&token="
