@@ -35,3 +35,16 @@ minify:
         - name: Tags
           url: tags/
           weight: 10
+
+  profileMode:
+    enabled: true
+    title: PaperMod
+    imageUrl: "#"
+    imageTitle: my image
+    # imageWidth: 120
+    # imageHeight: 120
+    buttons:
+      - name: Archives
+        url: archives
+      - name: Tags
+        url: tags
