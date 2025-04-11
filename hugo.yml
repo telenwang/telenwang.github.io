@@ -2,3 +2,16 @@ baseURL: "https://telenwang.github.io"
 languageCode: "en-gb"
 title: "Telen's Blog"
 theme: "PaperMod"
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+mainsections: ["posts", "papermod"]
+
+minify:
+  disableXML: true
+  # minifyOutput: true
