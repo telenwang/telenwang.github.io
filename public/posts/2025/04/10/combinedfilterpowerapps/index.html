@@ -4,11 +4,11 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>How to use combined filter panel in Power Apps | Telen&#39;s Blog</title>
 <meta name="keywords" content="">
 <meta name="description" content="In this article, I want to explore a way to use combined filter controls and pass the values to dataset.
-I used Accounts(Sample data）table for the demostration, you can use your own data if you&rsquo;d like.
+I used Accounts(Sample data)table for the demostration, you can use your own data if you&rsquo;d like.
 Control list.
 
   
@@ -32,11 +32,6 @@ Control list.
       
           DropDown(Preview)
           Relationship Type
-          Account
-      
-      
-          ComBox
-          Business Type
           Account
       
       
@@ -99,7 +94,109 @@ The layout will be like this screen shot.">
         }
 
     </style>
-</noscript>
+</noscript><meta property="og:url" content="http://localhost:1313/posts/2025/04/10/combinedfilterpowerapps/">
+  <meta property="og:site_name" content="Telen&#39;s Blog">
+  <meta property="og:title" content="How to use combined filter panel in Power Apps">
+  <meta property="og:description" content="In this article, I want to explore a way to use combined filter controls and pass the values to dataset. I used Accounts(Sample data)table for the demostration, you can use your own data if you’d like.
+Control list. Control Refer to Source Data ComBox Business Type Account Toggle Credit Hold Account DropDown(Preview) Relationship Type Account Reset Reset All conrols n/a Table(preview) collection Account The layout will be like this screen shot.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-04-09T10:00:00-04:00">
+    <meta property="article:modified_time" content="2025-04-09T10:00:00-04:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to use combined filter panel in Power Apps">
+<meta name="twitter:description" content="In this article, I want to explore a way to use combined filter controls and pass the values to dataset.
+I used Accounts(Sample data)table for the demostration, you can use your own data if you&rsquo;d like.
+Control list.
+
+  
+      
+          Control
+          Refer to
+          Source Data
+      
+  
+  
+      
+          ComBox
+          Business Type
+          Account
+      
+      
+          Toggle
+          Credit Hold
+          Account
+      
+      
+          DropDown(Preview)
+          Relationship Type
+          Account
+      
+      
+          Reset
+          Reset All conrols
+          n/a
+      
+      
+          Table(preview)
+          collection
+          Account
+      
+  
+
+The layout will be like this screen shot.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "How to use combined filter panel in Power Apps",
+      "item": "http://localhost:1313/posts/2025/04/10/combinedfilterpowerapps/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How to use combined filter panel in Power Apps",
+  "name": "How to use combined filter panel in Power Apps",
+  "description": "In this article, I want to explore a way to use combined filter controls and pass the values to dataset. I used Accounts(Sample data)table for the demostration, you can use your own data if you\u0026rsquo;d like.\nControl list. Control Refer to Source Data ComBox Business Type Account Toggle Credit Hold Account DropDown(Preview) Relationship Type Account Reset Reset All conrols n/a Table(preview) collection Account The layout will be like this screen shot.\n",
+  "keywords": [
+    
+  ],
+  "articleBody": "In this article, I want to explore a way to use combined filter controls and pass the values to dataset. I used Accounts(Sample data)table for the demostration, you can use your own data if you’d like.\nControl list. Control Refer to Source Data ComBox Business Type Account Toggle Credit Hold Account DropDown(Preview) Relationship Type Account Reset Reset All conrols n/a Table(preview) collection Account The layout will be like this screen shot.\nKey function is Filter. Here is from Microsoft.\nSyntax Filter(Table*, Formula1 [, Formula2, … ] )\nTable - Required. Table to search. Formula(s) - Required. The formula by which each record of the table is evaluated. The function returns all records that result in true. You can reference columns within the table. If you supply more than one formula, the results of all formulas are combined with the And function. Except the normal operators, you can use in and exactin operators for substring matches.\nWhen use controls like Combox, DropDown, List, etc, the data type of those data are table. So, when use for example Combox, in operator will be in my choice list. Below is the data in the table, and I want to filter Business type in (“EMS”,“OEM”).\nThe code could be like :\nFROM Account WHERE 'Business Type' IN ( Combox.dataset) //It's not a real code, I want to use T-SQL to explain it. The ‘in’ operator, find a string in a data source, such as a collection or an imported table. If we inteprete to Power Fx.\nFilter( Account, 'Business Type' in Combox.SelectedItems ) Or if you want narrow down to the value only, use ShowColumns function, it will remove other columns and only return the columns you want, here it will be value column, Note, here is still a table type even it only has one column.\nFilter( Account, 'Business Type' in ShowColumns(Combox.SelectedItems,Value) ) Similarly, we can combine other controls as input for the Filter formula.\nBelow is step by step for the journey.\n1. Assign data to Combox. Items = Choices('Business Type (Accounts)') IsSearchable = false //default is true. 2. Assign data to DropDown. Items = Choices('Relationship Type (Accounts)') DefaultSelectedItems= [] 3. Reset. OnSelect = Reset(ComboBox1);Reset(DropdownCanvas2); 4. Add Button and add code for OnSelect. ClearCollect( myAccount, RenameColumns( ShowColumns( Filter( Accounts, (IsBlank(ComboBox1.SelectedItems) || 'Business Type' in ComboBox1.SelectedItems) And (IsEmpty(DropdownCanvas2.SelectedItems) || 'Relationship Type' in ShowColumns( DropdownCanvas2.SelectedItems, Value )) And 'Credit Hold' = Toggle1.Checked ), 'Account Name', 'Main Phone', 'Address 1: City', 'Primary Contact', 'Credit Limit' ), name,'Customer Name', address1_city,'City', creditlimit,'Credit Limit', primarycontactid,'Primary Contact', telephone1,'Main Phone' ) ) Enjoy.\n",
+  "wordCount" : "423",
+  "inLanguage": "en",
+  "datePublished": "2025-04-09T10:00:00-04:00",
+  "dateModified": "2025-04-09T10:00:00-04:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/2025/04/10/combinedfilterpowerapps/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Telen's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
@@ -139,9 +236,30 @@ The layout will be like this screen shot.">
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
                 </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="http://localhost:1313/profilemode/" title="Profilemode"
+                            aria-label="Profilemode">Profilemode</a>
+                    </li>
+                </ul>
             </div>
         </div>
         <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </header>
@@ -158,7 +276,7 @@ The layout will be like this screen shot.">
 </div>
   </header> 
   <div class="post-content"><h4 id="in-this-article-i-want-to-explore-a-way-to-use-combined-filter-controls-and-pass-the-values-to-dataset">In this article, I want to explore a way to use combined filter controls and pass the values to dataset.<a hidden class="anchor" aria-hidden="true" href="#in-this-article-i-want-to-explore-a-way-to-use-combined-filter-controls-and-pass-the-values-to-dataset">#</a></h4>
-<p>I used Accounts(Sample data）table for the demostration, you can use your own data if you&rsquo;d like.</p>
+<p>I used Accounts(Sample data)table for the demostration, you can use your own data if you&rsquo;d like.</p>
 <h5 id="control-list">Control list.<a hidden class="anchor" aria-hidden="true" href="#control-list">#</a></h5>
 <table>
   <thead>
@@ -182,11 +300,6 @@ The layout will be like this screen shot.">
       <tr>
           <td>DropDown(Preview)</td>
           <td>Relationship Type</td>
-          <td>Account</td>
-      </tr>
-      <tr>
-          <td>ComBox</td>
-          <td>Business Type</td>
           <td>Account</td>
       </tr>
       <tr>
@@ -218,8 +331,8 @@ So, when use for example Combox, in operator will be in my choice list.
 Below is the data in the table, and I want to filter Business type in (&ldquo;EMS&rdquo;,&ldquo;OEM&rdquo;).</p>
 <p><img alt="Combined controls" loading="lazy" src="/businessType.png"></p>
 <p>The code could be like :</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> Account <span style="color:#66d9ef">WHERE</span> <span style="color:#e6db74">&#39;Business Type&#39;</span> <span style="color:#66d9ef">IN</span> ( Combox.dataset)
-</span></span><span style="display:flex;"><span><span style="color:#f92672">//</span>It<span style="color:#e6db74">&#39;s not a real code, I want to use T-SQL to explain it.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">FROM</span><span class="w"> </span><span class="n">Account</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="s1">&#39;Business Type&#39;</span><span class="w"> </span><span class="k">IN</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">Combox</span><span class="p">.</span><span class="n">dataset</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="o">//</span><span class="n">It</span><span class="s1">&#39;s not a real code, I want to use T-SQL to explain it.
 </span></span></span></code></pre></div><p>The &lsquo;in&rsquo; operator, find a string in a data source, such as a collection or an imported table.
 If we inteprete to Power Fx.</p>
 <pre tabindex="0"><code>Filter(

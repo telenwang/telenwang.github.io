@@ -5,7 +5,7 @@
     <link>http://localhost:1313/</link>
     <description>Recent content on Telen&#39;s Blog</description>
     <generator>Hugo -- 0.145.0</generator>
-    <language>en-gb</language>
+    <language>en</language>
     <lastBuildDate>Wed, 09 Apr 2025 10:00:00 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +14,7 @@
       <pubDate>Wed, 09 Apr 2025 10:00:00 -0400</pubDate>
       <guid>http://localhost:1313/posts/2025/04/10/combinedfilterpowerapps/</guid>
       <description>&lt;h4 id=&#34;in-this-article-i-want-to-explore-a-way-to-use-combined-filter-controls-and-pass-the-values-to-dataset&#34;&gt;In this article, I want to explore a way to use combined filter controls and pass the values to dataset.&lt;/h4&gt;
-&lt;p&gt;I used Accounts(Sample data）table for the demostration, you can use your own data if you&amp;rsquo;d like.&lt;/p&gt;
+&lt;p&gt;I used Accounts(Sample data)table for the demostration, you can use your own data if you&amp;rsquo;d like.&lt;/p&gt;
 &lt;h5 id=&#34;control-list&#34;&gt;Control list.&lt;/h5&gt;
 &lt;table&gt;
   &lt;thead&gt;
@@ -41,11 +41,6 @@
           &lt;td&gt;Account&lt;/td&gt;
       &lt;/tr&gt;
       &lt;tr&gt;
-          &lt;td&gt;ComBox&lt;/td&gt;
-          &lt;td&gt;Business Type&lt;/td&gt;
-          &lt;td&gt;Account&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
           &lt;td&gt;Reset&lt;/td&gt;
           &lt;td&gt;Reset All conrols&lt;/td&gt;
           &lt;td&gt;n/a&lt;/td&gt;
@@ -58,6 +53,20 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;The layout will be like this screen shot.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/archives/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/search/</guid>
+      <description></description>
     </item>
   </channel>
 </rss>

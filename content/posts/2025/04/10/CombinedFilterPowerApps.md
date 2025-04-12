@@ -8,7 +8,7 @@ excerpt: "A brief description or summary of my article."
 
 #### In this article, I want to explore a way to use combined filter controls and pass the values to dataset.
 
-I used Accounts(Sample data）table for the demostration, you can use your own data if you'd like.
+I used Accounts(Sample data)table for the demostration, you can use your own data if you'd like.
 
 ##### Control list.
 
@@ -17,7 +17,6 @@ I used Accounts(Sample data）table for the demostration, you can use your own d
 |ComBox   |Business Type|   Account|
 |Toggle   |Credit Hold| Account|
 |DropDown(Preview)   |  Relationship Type|Account|
-|ComBox   |Business Type|Account|
 |Reset|Reset All conrols|n/a|
 |Table(preview)|collection|Account|
 

@@ -3,18 +3,12 @@ date = '2025-04-11T10:25:44+02:00'
 draft = true
 title = 'CombinedFilterPowerApps'
 +++
----
-layout: post
-title: "How to use combined filter panel in Power Apps"
-date: 2025-04-09 10:00:00 -0400
-categories: [blog, tech]
-excerpt: "A brief description or summary of my article."
----
+
 # How to use combined filter panel in Power Apps
 
 #### In this article, I want to explore a way to use combined filter controls and pass the values to dataset.
 
-I used Accounts(Sample data）table for the demostration, you can use your own data if you'd like.
+I used Accounts(Sample data)table for the demostration, you can use your own data if you'd like.
 
 ##### Control list.
 
