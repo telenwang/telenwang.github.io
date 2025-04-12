@@ -38,7 +38,7 @@ languages:
 
   profileMode:
     enabled: false
-    title: PaperMod
+    title: Not Finish
     imageUrl: "#"
     imageTitle: my image
     # imageWidth: 120
