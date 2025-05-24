@@ -31,7 +31,7 @@ Below is an example of one message structure from `Get emails (V3)` output body 
             },
 ```
 
-After check each actions, one option can be used is `Send an HTTP request` within Outlook 365 connector.
+After check each actions, one option can be used is `Send an HTTP request` within Outlook 365 connector.combine with ***Get emails (V3)***
 
 ### Use `Send an HTTP request`
 
@@ -42,11 +42,12 @@ This action construct a Microsoft Graph REST API request to invoke. These segmen
 
 https://graph.microsoft.com/v1.0/me/messages will be the way to go. But I only want to check my inbox and unread messages.
 
-https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages will be perfect for me.
+https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages/{messageID} will be perfect for me.
 
 For demonstrate purpose，pseudocode as below：
 
  ```pseudocode
+ optional, get emails V3
  Send an request to query inbox message and apply to unread message.
  Filter if any uncategorized message.
  For each message found, assign category.
@@ -63,7 +64,7 @@ For demonstrate purpose，pseudocode as below：
    filter=categories/any(c:c eq null)//not work
    filter=categories/any(c:c eq 'null')//not work
    filter=categories/any(c:c eq '')//not work
-   filter=not categories/any() //only work with /me/messages
+   filter=not categories/any() //only work with /me/messages without messgeid varible of course, if purely filter message box only it will work.
    ```
    
    
