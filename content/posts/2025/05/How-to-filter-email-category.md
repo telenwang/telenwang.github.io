@@ -33,7 +33,7 @@ Below is an example of one message structure from `Get emails (V3)` output body 
 
 After check each actions, one option can be used is `Send an HTTP request` within Outlook 365 connector.
 
-#### Use `Send an HTTP request`
+### Use `Send an HTTP request`
 
 This action construct a Microsoft Graph REST API request to invoke. These segments are supported: 
 
@@ -52,7 +52,7 @@ For demonstrate purpose，pseudocode as below：
  For each message found, assign category.
  ```
 
-#### What won't work:
+### What won't work:
 
 1. ##### Use Odata filter
    
@@ -74,7 +74,7 @@ For demonstrate purpose，pseudocode as below：
    equals(length(item()?['categories']), 0)) //nope
    ```
 
-#### Does WORK.
+### Does WORK.
 
 ```json
 empty(item()?['categories'])
@@ -83,11 +83,11 @@ empty(item()?['categories'])
 
 Yes, this is the right one for this scenario.
 
-#### Flow overview.
+### Flow overview.
 
 ![](/flowOverview.png)
 
-#### Flow break down:
+### Flow break down:
 
 1. ##### Initialize variable for OData query
    
@@ -206,7 +206,7 @@ Yes, this is the right one for this scenario.
    }
    ```
 
-#### Compare another one I created before which consume more API.
+### Compare another one I created before which consume more API.
 
 ![FilterNonCategoryEmail](/FilterNonCategoryEmail.gif)
 
