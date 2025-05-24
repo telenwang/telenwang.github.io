@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>How to use combined filter panel in Power Apps | Telen&#39;s Blog</title>
+<title>CombinedFilterPowerApps | Telen&#39;s Blog</title>
 <meta name="keywords" content="">
 <meta name="description" content="How to use combined filter panel in Power Apps
 In this article, I want to explore a way to use combined filter controls and pass the values to dataset.
@@ -97,16 +97,16 @@ The layout will be like this screen shot.">
     </style>
 </noscript><meta property="og:url" content="http://localhost:1313/posts/2025/04/10/how-to-use-combined-filter-panle-in-power-apps/">
   <meta property="og:site_name" content="Telen&#39;s Blog">
-  <meta property="og:title" content="How to use combined filter panel in Power Apps">
+  <meta property="og:title" content="CombinedFilterPowerApps">
   <meta property="og:description" content="How to use combined filter panel in Power Apps In this article, I want to explore a way to use combined filter controls and pass the values to dataset. I used Accounts(Sample data)table for the demostration, you can use your own data if you’d like.
 Control list. Control Refer to Source Data ComBox Business Type Account Toggle Credit Hold Account DropDown(Preview) Relationship Type Account Reset Reset All conrols n/a Table(preview) collection Account The layout will be like this screen shot.">
   <meta property="og:locale" content="en">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-04-09T10:00:00-04:00">
-    <meta property="article:modified_time" content="2025-04-09T10:00:00-04:00">
+    <meta property="article:published_time" content="2025-04-11T10:25:44+02:00">
+    <meta property="article:modified_time" content="2025-04-11T10:25:44+02:00">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="How to use combined filter panel in Power Apps">
+<meta name="twitter:title" content="CombinedFilterPowerApps">
 <meta name="twitter:description" content="How to use combined filter panel in Power Apps
 In this article, I want to explore a way to use combined filter controls and pass the values to dataset.
 I used Accounts(Sample data)table for the demostration, you can use your own data if you&rsquo;d like.
@@ -164,7 +164,7 @@ The layout will be like this screen shot.">
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "How to use combined filter panel in Power Apps",
+      "name": "CombinedFilterPowerApps",
       "item": "http://localhost:1313/posts/2025/04/10/how-to-use-combined-filter-panle-in-power-apps/"
     }
   ]
@@ -174,8 +174,8 @@ The layout will be like this screen shot.">
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "How to use combined filter panel in Power Apps",
-  "name": "How to use combined filter panel in Power Apps",
+  "headline": "CombinedFilterPowerApps",
+  "name": "CombinedFilterPowerApps",
   "description": "How to use combined filter panel in Power Apps In this article, I want to explore a way to use combined filter controls and pass the values to dataset. I used Accounts(Sample data)table for the demostration, you can use your own data if you\u0026rsquo;d like.\nControl list. Control Refer to Source Data ComBox Business Type Account Toggle Credit Hold Account DropDown(Preview) Relationship Type Account Reset Reset All conrols n/a Table(preview) collection Account The layout will be like this screen shot.\n",
   "keywords": [
     
@@ -183,8 +183,8 @@ The layout will be like this screen shot.">
   "articleBody": "How to use combined filter panel in Power Apps In this article, I want to explore a way to use combined filter controls and pass the values to dataset. I used Accounts(Sample data)table for the demostration, you can use your own data if you’d like.\nControl list. Control Refer to Source Data ComBox Business Type Account Toggle Credit Hold Account DropDown(Preview) Relationship Type Account Reset Reset All conrols n/a Table(preview) collection Account The layout will be like this screen shot.\nKey function is Filter. Here is from Microsoft.\nSyntax Filter(Table*, Formula1 [, Formula2, … ] )\nTable - Required. Table to search. Formula(s) - Required. The formula by which each record of the table is evaluated. The function returns all records that result in true. You can reference columns within the table. If you supply more than one formula, the results of all formulas are combined with the And function. Except the normal operators, you can use in and exactin operators for substring matches.\nWhen use controls like Combox, DropDown, List, etc, the data type of those data are table. So, when use for example Combox, in operator will be in my choice list. Below is the data in the table, and I want to filter Business type in (“EMS”,“OEM”).\nThe code could be like :\nFROM Account WHERE 'Business Type' IN ( Combox.dataset) //It's not a real code, I want to use T-SQL to explain it. The ‘in’ operator, find a string in a data source, such as a collection or an imported table. If we inteprete to Power Fx.\nFilter(\rAccount,\r'Business Type' in Combox.SelectedItems\r) Or if you want narrow down to the value only, use ShowColumns function, it will remove other columns and only return the columns you want, here it will be value column, Note, here is still a table type even it only has one column.\nFilter(\rAccount,\r'Business Type' in ShowColumns(Combox.SelectedItems,Value)\r) Similarly, we can combine other controls as input for the Filter formula.\nBelow is step by step for the journey.\n1. Assign data to Combox. Items = Choices('Business Type (Accounts)')\rIsSearchable = false //default is true. 2. Assign data to DropDown. Items = Choices('Relationship Type (Accounts)')\rDefaultSelectedItems= [] 3. Reset. OnSelect = Reset(ComboBox1);Reset(DropdownCanvas2); 4. Add Button and add code for OnSelect. ClearCollect(\rmyAccount,\rRenameColumns(\rShowColumns(\rFilter(\rAccounts,\r(IsBlank(ComboBox1.SelectedItems) || 'Business Type' in ComboBox1.SelectedItems) And (IsEmpty(DropdownCanvas2.SelectedItems) || 'Relationship Type' in ShowColumns(\rDropdownCanvas2.SelectedItems,\rValue\r)) And 'Credit Hold' = Toggle1.Checked\r),\r'Account Name',\r'Main Phone',\r'Address 1: City',\r'Primary Contact',\r'Credit Limit'\r),\rname,'Customer Name',\raddress1_city,'City',\rcreditlimit,'Credit Limit',\rprimarycontactid,'Primary Contact',\rtelephone1,'Main Phone'\r)\r) Enjoy.\n",
   "wordCount" : "432",
   "inLanguage": "en",
-  "datePublished": "2025-04-09T10:00:00-04:00",
-  "dateModified": "2025-04-09T10:00:00-04:00",
+  "datePublished": "2025-04-11T10:25:44+02:00",
+  "dateModified": "2025-04-11T10:25:44+02:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "http://localhost:1313/posts/2025/04/10/how-to-use-combined-filter-panle-in-power-apps/"
@@ -271,9 +271,15 @@ The layout will be like this screen shot.">
   <header class="post-header">
     
     <h1 class="post-title entry-hint-parent">
-      How to use combined filter panel in Power Apps
+      CombinedFilterPowerApps
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
     </h1>
-    <div class="post-meta"><span title='2025-04-09 10:00:00 -0400 -0400'>April 9, 2025</span>
+    <div class="post-meta"><span title='2025-04-11 10:25:44 +0200 CEST'>April 11, 2025</span>
 
 </div>
   </header> 

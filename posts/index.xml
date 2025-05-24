@@ -6,8 +6,17 @@
     <description>Recent content in Posts on Telen&#39;s Blog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 09 Apr 2025 10:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 24 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://blog.nelettech.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Power Automate: Filter Emails Which Have No Category</title>
+      <link>https://blog.nelettech.com/posts/2025/05/how-to-filter-email-category/</link>
+      <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
+      <guid>https://blog.nelettech.com/posts/2025/05/how-to-filter-email-category/</guid>
+      <description>&lt;h3 id=&#34;in-this-article-i-want-to-show-you-how-to-filter-no-category-email-in-outlook-via-power-automate&#34;&gt;In this Article I want to show you how to filter no category email in outlook via Power Automate.&lt;/h3&gt;
+&lt;p&gt;In current Outlook 365 connector, there is no option to filter out emails with/without categories.&lt;/p&gt;
+&lt;p&gt;When I tried to build the flow, I thought I could use &lt;code&gt;Get emails (V3)&lt;/code&gt;. After I tried I realised that there is no info in the body, but it doesn&amp;rsquo;t have the categories information, and the &lt;code&gt;most important thing is it may consume more API if I use it first&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>How to use combined filter panel in Power Apps</title>
       <link>https://blog.nelettech.com/posts/2025/04/10/combinedfilterpowerapps/</link>
