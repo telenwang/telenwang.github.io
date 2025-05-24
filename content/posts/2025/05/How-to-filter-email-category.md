@@ -63,6 +63,7 @@ For demonstrate purpose，pseudocode as below：
    filter=categories/any(c:c eq null)//not work
    filter=categories/any(c:c eq 'null')//not work
    filter=categories/any(c:c eq '')//not work
+   filter=not categories/any() //only work with /me/messages
    ```
    
    
