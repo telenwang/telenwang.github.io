@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tech on Telen&#39;s Blog</title>
-    <link>http://localhost:1313/categories/tech/</link>
+    <link>https://blog.nelettech.com/categories/tech/</link>
     <description>Recent content in Tech on Telen&#39;s Blog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
     <lastBuildDate>Wed, 09 Apr 2025 10:00:00 -0400</lastBuildDate>
-    <atom:link href="http://localhost:1313/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://blog.nelettech.com/categories/tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How to use combined filter panel in Power Apps</title>
-      <link>http://localhost:1313/posts/2025/04/10/combinedfilterpowerapps/</link>
+      <link>https://blog.nelettech.com/posts/2025/04/10/combinedfilterpowerapps/</link>
       <pubDate>Wed, 09 Apr 2025 10:00:00 -0400</pubDate>
-      <guid>http://localhost:1313/posts/2025/04/10/combinedfilterpowerapps/</guid>
+      <guid>https://blog.nelettech.com/posts/2025/04/10/combinedfilterpowerapps/</guid>
       <description>&lt;h4 id=&#34;in-this-article-i-want-to-explore-a-way-to-use-combined-filter-controls-and-pass-the-values-to-dataset&#34;&gt;In this article, I want to explore a way to use combined filter controls and pass the values to dataset.&lt;/h4&gt;
 &lt;p&gt;I used Accounts(Sample data)table for the demostration, you can use your own data if you&amp;rsquo;d like.&lt;/p&gt;
 &lt;h5 id=&#34;control-list&#34;&gt;Control list.&lt;/h5&gt;
@@ -56,9 +56,9 @@
     </item>
     <item>
       <title>The limitations of TRIM() in T‑SQL when cleaning/migrating data</title>
-      <link>http://localhost:1313/posts/2025/04/migrating_data/</link>
+      <link>https://blog.nelettech.com/posts/2025/04/migrating_data/</link>
       <pubDate>Sat, 22 Feb 2025 20:33:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/2025/04/migrating_data/</guid>
+      <guid>https://blog.nelettech.com/posts/2025/04/migrating_data/</guid>
       <description>&lt;p&gt;&lt;strong&gt;In T-SQL&lt;/strong&gt;, the &lt;strong&gt;TRIM()&lt;/strong&gt; function only removes spaces (ASCII 32) and cannot remove hidden characters (such as newline characters, carriage returns, tabs, or some emojis). These characters might cause issues during data cleaning (or migration), for example:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
