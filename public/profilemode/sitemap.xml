@@ -2,40 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.nelettech.com/profilemode/categories/</loc>
+    <loc>http://localhost:1313/profilemode/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.nelettech.com/categories/"
+                href="http://localhost:1313/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="profilemode"
-                href="https://blog.nelettech.com/profilemode/categories/"
+                href="http://localhost:1313/profilemode/categories/"
                 />
   </url><url>
-    <loc>https://blog.nelettech.com/profilemode/</loc>
+    <loc>http://localhost:1313/profilemode/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.nelettech.com/"
+                href="http://localhost:1313/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="profilemode"
-                href="https://blog.nelettech.com/profilemode/"
+                href="http://localhost:1313/profilemode/"
                 />
   </url><url>
-    <loc>https://blog.nelettech.com/profilemode/tags/</loc>
+    <loc>http://localhost:1313/profilemode/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://blog.nelettech.com/tags/"
+                href="http://localhost:1313/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="profilemode"
-                href="https://blog.nelettech.com/profilemode/tags/"
+                href="http://localhost:1313/profilemode/tags/"
                 />
   </url>
 </urlset>

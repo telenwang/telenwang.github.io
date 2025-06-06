@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Categories on Telen&#39;s Blog</title>
-    <link>https://blog.nelettech.com/categories/</link>
+    <link>http://localhost:1313/categories/</link>
     <description>Recent content in Categories on Telen&#39;s Blog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
     <lastBuildDate>Wed, 09 Apr 2025 10:00:00 -0400</lastBuildDate>
-    <atom:link href="https://blog.nelettech.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Blog</title>
-      <link>https://blog.nelettech.com/categories/blog/</link>
+      <link>http://localhost:1313/categories/blog/</link>
       <pubDate>Wed, 09 Apr 2025 10:00:00 -0400</pubDate>
-      <guid>https://blog.nelettech.com/categories/blog/</guid>
+      <guid>http://localhost:1313/categories/blog/</guid>
       <description></description>
     </item>
     <item>
       <title>Tech</title>
-      <link>https://blog.nelettech.com/categories/tech/</link>
+      <link>http://localhost:1313/categories/tech/</link>
       <pubDate>Wed, 09 Apr 2025 10:00:00 -0400</pubDate>
-      <guid>https://blog.nelettech.com/categories/tech/</guid>
+      <guid>http://localhost:1313/categories/tech/</guid>
       <description></description>
     </item>
   </channel>
