@@ -6,8 +6,15 @@
     <description>Recent content in Categories on Telen&#39;s Blog</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 09 Apr 2025 10:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 06 Jun 2025 10:00:00 +0200</lastBuildDate>
     <atom:link href="https://blog.nelettech.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tutorials</title>
+      <link>https://blog.nelettech.com/categories/tutorials/</link>
+      <pubDate>Fri, 06 Jun 2025 10:00:00 +0200</pubDate>
+      <guid>https://blog.nelettech.com/categories/tutorials/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Blog</title>
       <link>https://blog.nelettech.com/categories/blog/</link>
