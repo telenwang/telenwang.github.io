@@ -6,8 +6,7 @@ date: 2025-06-14T10:00:00+02:00
 draft: false
 tags:
   - Power Canvas app
-  - Mid function
-  - Mod function
+  - function
 categories:
   - Tutorials
 ---
@@ -56,13 +55,13 @@ And to get dynamic text，here we need timer control to manipulate strings.
 
 We can set duration's value to equal the length of the text and multiple 100, meanwhile set repeat = true.
 
-```
+```json
 Len(TextCanvas1.Text)*100
 ```
 
 Now  our **Right** formula is：
 
-```
+```json
 Right(
         TextCanvas1.Text,
         Len(TextCanvas1.Text) - Timer3.Value/100
@@ -71,7 +70,7 @@ Right(
 
 The same as，**Left** formula：
 
-```
+```js
  Left(
     TextCanvas1.Text,
     Timer3.Value / 100
@@ -80,7 +79,7 @@ The same as，**Left** formula：
 
 Combine them together and assign it to TextInputCanvas1,Value =:
 
-```
+```js
 Right(
         TextCanvas1.Text,
         Len(TextCanvas1.Text) - Timer3.Value/100
@@ -101,7 +100,7 @@ We knew from previous that we can construct`*Timer1*.Value / 100` <= `Len(*TextC
 
 So：
 
-```
+```json
 Mod(Timer1.Value / 100, Len(TextCanvas1.Text)+1 )
 ```
 
@@ -109,7 +108,7 @@ The value of this formula will always be less than or equal to the length of the
 
 Considering that the second parameter of ***Mid()*** is at least 1, we introduce the ***Max()*** function.
 
-```
+```json
  Mid(
     TextCanvas1.Text & "  " & TextCanvas1.Text, //duplicate with space buffer
     Max(1, Mod(Timer1.Value / 100, Len(TextCanvas1.Text)+1 )), 
