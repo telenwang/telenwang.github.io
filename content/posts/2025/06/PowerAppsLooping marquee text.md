@@ -3,7 +3,7 @@ title: "Power Canvas App: Looping marquee text"
 date: 2025-06-14
 draft: false
 date: 2025-06-14T10:00:00+02:00
-draft: true
+draft: false
 tags:
   - Power Canvas app
   - Mid function
