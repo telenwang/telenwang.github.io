@@ -70,7 +70,7 @@ Right(
 
 The same as，**Left** formula：
 
-```js
+```json
  Left(
     TextCanvas1.Text,
     Timer3.Value / 100
@@ -79,7 +79,7 @@ The same as，**Left** formula：
 
 Combine them together and assign it to TextInputCanvas1,Value =:
 
-```js
+```json
 Right(
         TextCanvas1.Text,
         Len(TextCanvas1.Text) - Timer3.Value/100
