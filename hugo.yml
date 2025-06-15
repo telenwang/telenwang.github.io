@@ -15,7 +15,7 @@ mainsections: ["posts", "papermod"]
 minify:
   disableXML: true
   # minifyOutput: true
-
+    
 languages:
   en:
     languageName: "English"
@@ -35,9 +35,11 @@ languages:
         - name: Tags
           url: tags/
           weight: 10
-
+params:
+  author: "Telen Wang"
   profileMode:
     enabled: false
+    bio: "0, 1 and UNKNOWN"
     title: Not Finish
     imageUrl: "#"
     imageTitle: my image
