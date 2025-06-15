@@ -35,10 +35,9 @@ languages:
         - name: Tags
           url: tags/
           weight: 10
-params:
-  author: "Telen Wang"
+
   profileMode:
-    enabled: false
+    enabled: true
     bio: "0, 1 and UNKNOWN"
     title: Not Finish
     imageUrl: "#"
@@ -53,6 +52,7 @@ params:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  author: "Telen Wang"
   analytics:
     google:
       SiteVerificationTag: "0FquDNl2aNHqUT71m0SBl-q8Hi22fphgj-JdMuH8fUY"
