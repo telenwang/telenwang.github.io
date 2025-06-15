@@ -1,4 +1,4 @@
-baseURL: "https://blog.nelettech.com"
+baseURL: "https://blog.nelettech.com/"
 languageCode: "en-gb"
 title: "Telen's Blog"
 theme: "PaperMod"
@@ -51,7 +51,6 @@ languages:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-
 
   homeInfoParams:
     Title: "Hej/你好."

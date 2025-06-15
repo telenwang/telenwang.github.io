@@ -1,451 +1,126 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto">
-
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Power Automate: Filter Emails Which Have No Category | Telen&#39;s Blog</title>
-<meta name="keywords" content="">
-<meta name="description" content="In this Article I want to show you how to filter no category email in outlook via Power Automate.
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Power Automate: Filter Emails Which Have No Category | Telen's Blog</title>
+<meta name=keywords content><meta name=description content="In this Article I want to show you how to filter no category email in outlook via Power Automate.
 In current Outlook 365 connector, there is no option to filter out emails with/without categories.
-When I tried to build the flow, I thought I could use Get emails (V3). After I tried I realised that there is no info in the body, but it doesn&rsquo;t have the categories information, and the most important thing is it may consume more API if I use it first.">
-<meta name="author" content="">
-<link rel="canonical" href="https://blog.nelettech.com/posts/2025/05/how-to-filter-email-category/">
-<meta name="google-site-verification" content="0FquDNl2aNHqUT71m0SBl-q8Hi22fphgj-JdMuH8fUY" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a030e887a7dd3c3f3918e4cc113129361414bda.css" integrity="sha256-bammPSWpYIvKL3&#43;QegMOiHp908PzkY5MwRMSk2FBS9o=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://blog.nelettech.com/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://blog.nelettech.com/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://blog.nelettech.com/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://blog.nelettech.com/apple-touch-icon.png">
-<link rel="mask-icon" href="https://blog.nelettech.com/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://blog.nelettech.com/posts/2025/05/how-to-filter-email-category/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript><meta property="og:url" content="https://blog.nelettech.com/posts/2025/05/how-to-filter-email-category/">
-  <meta property="og:site_name" content="Telen&#39;s Blog">
-  <meta property="og:title" content="Power Automate: Filter Emails Which Have No Category">
-  <meta property="og:description" content="In this Article I want to show you how to filter no category email in outlook via Power Automate. In current Outlook 365 connector, there is no option to filter out emails with/without categories.
-When I tried to build the flow, I thought I could use Get emails (V3). After I tried I realised that there is no info in the body, but it doesn’t have the categories information, and the most important thing is it may consume more API if I use it first.">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-05-24T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-05-24T00:00:00+00:00">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Power Automate: Filter Emails Which Have No Category">
-<meta name="twitter:description" content="In this Article I want to show you how to filter no category email in outlook via Power Automate.
+When I tried to build the flow, I thought I could use Get emails (V3). After I tried I realised that there is no info in the body, but it doesn&rsquo;t have the categories information, and the most important thing is it may consume more API if I use it first."><meta name=author content><link rel=canonical href=https://blog.nelettech.com/posts/2025/05/how-to-filter-email-category/><link crossorigin=anonymous href=/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a030e887a7dd3c3f3918e4cc113129361414bda.css integrity="sha256-bammPSWpYIvKL3+QegMOiHp908PzkY5MwRMSk2FBS9o=" rel="preload stylesheet" as=style><link rel=icon href=https://blog.nelettech.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://blog.nelettech.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://blog.nelettech.com/favicon-32x32.png><link rel=apple-touch-icon href=https://blog.nelettech.com/apple-touch-icon.png><link rel=mask-icon href=https://blog.nelettech.com/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://blog.nelettech.com/posts/2025/05/how-to-filter-email-category/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:url" content="https://blog.nelettech.com/posts/2025/05/how-to-filter-email-category/"><meta property="og:site_name" content="Telen's Blog"><meta property="og:title" content="Power Automate: Filter Emails Which Have No Category"><meta property="og:description" content="In this Article I want to show you how to filter no category email in outlook via Power Automate. In current Outlook 365 connector, there is no option to filter out emails with/without categories.
+When I tried to build the flow, I thought I could use Get emails (V3). After I tried I realised that there is no info in the body, but it doesn’t have the categories information, and the most important thing is it may consume more API if I use it first."><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-05-24T00:00:00+00:00"><meta property="article:modified_time" content="2025-05-24T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Power Automate: Filter Emails Which Have No Category"><meta name=twitter:description content="In this Article I want to show you how to filter no category email in outlook via Power Automate.
 In current Outlook 365 connector, there is no option to filter out emails with/without categories.
-When I tried to build the flow, I thought I could use Get emails (V3). After I tried I realised that there is no info in the body, but it doesn&rsquo;t have the categories information, and the most important thing is it may consume more API if I use it first.">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://blog.nelettech.com/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Power Automate: Filter Emails Which Have No Category",
-      "item": "https://blog.nelettech.com/posts/2025/05/how-to-filter-email-category/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Power Automate: Filter Emails Which Have No Category",
-  "name": "Power Automate: Filter Emails Which Have No Category",
-  "description": "In this Article I want to show you how to filter no category email in outlook via Power Automate. In current Outlook 365 connector, there is no option to filter out emails with/without categories.\nWhen I tried to build the flow, I thought I could use Get emails (V3). After I tried I realised that there is no info in the body, but it doesn\u0026rsquo;t have the categories information, and the most important thing is it may consume more API if I use it first.\n",
-  "keywords": [
-    
-  ],
-  "articleBody": "In this Article I want to show you how to filter no category email in outlook via Power Automate. In current Outlook 365 connector, there is no option to filter out emails with/without categories.\nWhen I tried to build the flow, I thought I could use Get emails (V3). After I tried I realised that there is no info in the body, but it doesn’t have the categories information, and the most important thing is it may consume more API if I use it first.\nBelow is an example of one message structure from Get emails (V3) output body value.\n{ \"id\": \"value\", \"receivedDateTime\": \"\", \"hasAttachments\": false, \"internetMessageId\": \"\", \"subject\": \"\", \"bodyPreview\": \"Hi...\", \"importance\": \"normal\", \"conversationId\": \"\", \"isRead\": false, \"isHtml\": true, \"body\": \"html body\", \"from\": \"\", \"toRecipients\": \"\", \"attachments\": [] }, After check each actions, one option can be used is Send an HTTP request within Outlook 365 connector.combine with Get emails (V3)\nUse Send an HTTP request This action construct a Microsoft Graph REST API request to invoke. These segments are supported:\n1st segment: /me, /users/ 2nd segment: messages, mailFolders, events, calendar, calendars, outlook, inferenceClassification https://graph.microsoft.com/v1.0/me/messages will be the way to go. But I only want to check my inbox and unread messages.\nhttps://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages/{messageID} will be perfect for me.\nFor demonstrate purpose，pseudocode as below：\noptional, get emails V3\rSend an request to query inbox message and apply to unread message.\rFilter if any uncategorized message.\rFor each message found, assign category. What won’t work: Use Odata filter filter=categories eq null //not work filter=categories in //not work filter=categories/any(c:c eq '')//not work filter=categories/any(c:c eq null)//not work filter=categories/any(c:c eq 'null')//not work filter=categories/any(c:c eq '')//not work filter=not categories/any() //only work with /me/messages without messgeid varible of course, if purely filter message box only it will work. Use condition equals(item()?['categories'], null) //not work. equals(length(item()?['categories']), 0)) //nope Does WORK. empty(item()?['categories']) //Returns true if the object, array, or string is empty. Yes, this is the right one for this scenario.\nFlow overview. Flow break down: Initialize variable for OData query { \"type\": \"InitializeVariable\", \"inputs\": { \"variables\": [ { \"name\": \"MyQuery\", \"type\": \"string\", \"value\": \"filter=isRead eq false\u0026$select=categories\u0026$top=10\" } ] }, \"runAfter\": {} } Send an HTTP request { \"type\": \"OpenApiConnection\", \"inputs\": { \"parameters\": { \"Uri\": \"https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages?$@{variables('MyQuery')}\", \"Method\": \"GET\", \"ContentType\": \"application/json\" }, \"host\": { \"apiId\": \"/providers/Microsoft.PowerApps/apis/shared_office365\", \"connection\": \"shared_office365\", \"operationId\": \"HttpRequest\" } }, \"runAfter\": { \"Initialize_variable_for_OData_query\": [ \"Succeeded\" ] } } Filter array only uncategorized message { \"type\": \"Query\", \"inputs\": { \"from\": \"@body('Send_an_HTTP_request')?['value']\", \"where\": \"@empty(item()?['categories'])\" }, \"runAfter\": { \"Send_an_HTTP_request\": [ \"Succeeded\" ] } } For each uncategorized message { \"type\": \"Foreach\", \"foreach\": \"@outputs('Filter_array_only_uncategorized_message')['body']\", \"actions\": { \"Assigns_an_Outlook_category\": { \"type\": \"OpenApiConnection\", \"inputs\": { \"parameters\": { \"messageId\": \"@items('For_each_uncategorized_message')?['id']\", \"category\": \"FollowUP\" //Your category name. }, \"host\": { \"apiId\": \"/providers/Microsoft.PowerApps/apis/shared_office365\", \"connection\": \"shared_office365\", \"operationId\": \"AssignCategory\" } } } }, \"runAfter\": { \"Filter_array_only_uncategorized_message\": [ \"Succeeded\" ] } } Assigns an Outlook category { \"type\": \"OpenApiConnection\", \"inputs\": { \"parameters\": { \"messageId\": \"@items('For_each_uncategorized_message')?['id']\", \"category\": \"FollowUP\" }, \"host\": { \"apiId\": \"/providers/Microsoft.PowerApps/apis/shared_office365\", \"connection\": \"shared_office365\", \"operationId\": \"AssignCategory\" } } } Compare another one I created before which consume more API. Note: The examples shown use only generic and safe identifiers. Always review your own flow exports for sensitive info before sharing publicly.\nEnjoy.\n",
-  "wordCount" : "522",
-  "inLanguage": "en",
-  "datePublished": "2025-05-24T00:00:00Z",
-  "dateModified": "2025-05-24T00:00:00Z",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://blog.nelettech.com/posts/2025/05/how-to-filter-email-category/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Telen's Blog",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://blog.nelettech.com/favicon.ico"
-    }
-  }
-}
-</script>
-</head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://blog.nelettech.com/" accesskey="h" title="Telen&#39;s Blog (Alt + H)">Telen&#39;s Blog</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="https://blog.nelettech.com/profilemode/" title="Profilemode"
-                            aria-label="Profilemode">Profilemode</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="https://blog.nelettech.com/archives" title="Archive">
-                    <span>Archive</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://blog.nelettech.com/search/" title="Search">
-                    <span>Search</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://blog.nelettech.com/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      Power Automate: Filter Emails Which Have No Category
-    </h1>
-    <div class="post-meta"><span title='2025-05-24 00:00:00 +0000 UTC'>May 24, 2025</span>
-
-</div>
-  </header> 
-  <div class="post-content"><h3 id="in-this-article-i-want-to-show-you-how-to-filter-no-category-email-in-outlook-via-power-automate">In this Article I want to show you how to filter no category email in outlook via Power Automate.<a hidden class="anchor" aria-hidden="true" href="#in-this-article-i-want-to-show-you-how-to-filter-no-category-email-in-outlook-via-power-automate">#</a></h3>
-<p>In current Outlook 365 connector, there is no option to filter out emails with/without categories.</p>
-<p>When I tried to build the flow, I thought I could use <code>Get emails (V3)</code>. After I tried I realised that there is no info in the body, but it doesn&rsquo;t have the categories information, and the <code>most important thing is it may consume more API if I use it first</code>.</p>
-<p>Below is an example of one message structure from <code>Get emails (V3)</code> output body value.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl">            <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&#34;receivedDateTime&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&#34;hasAttachments&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&#34;internetMessageId&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&#34;subject&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&#34;bodyPreview&#34;</span><span class="p">:</span> <span class="s2">&#34;Hi...&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&#34;importance&#34;</span><span class="p">:</span> <span class="s2">&#34;normal&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&#34;conversationId&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&#34;isRead&#34;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&#34;isHtml&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&#34;body&#34;</span><span class="p">:</span> <span class="s2">&#34;html body&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&#34;from&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&#34;toRecipients&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="nt">&#34;attachments&#34;</span><span class="p">:</span> <span class="p">[]</span>
-</span></span><span class="line"><span class="cl">            <span class="p">}</span><span class="err">,</span>
-</span></span></code></pre></div><p>After check each actions, one option can be used is <code>Send an HTTP request</code> within Outlook 365 connector.combine with <em><strong>Get emails (V3)</strong></em></p>
-<h3 id="use-send-an-http-request">Use <code>Send an HTTP request</code><a hidden class="anchor" aria-hidden="true" href="#use-send-an-http-request">#</a></h3>
-<p>This action construct a Microsoft Graph REST API request to invoke. These segments are supported:</p>
-<ol>
-<li>1st segment: /me, /users/</li>
-<li>2nd segment: messages, mailFolders, events, calendar, calendars, outlook, inferenceClassification</li>
-</ol>
-<p><a href="https://graph.microsoft.com/v1.0/me/messages">https://graph.microsoft.com/v1.0/me/messages</a> will be the way to go. But I only want to check my inbox and unread messages.</p>
-<p><a href="https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages/%7BmessageID%7D">https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages/{messageID}</a> will be perfect for me.</p>
-<p>For demonstrate purpose，pseudocode as below：</p>
-<pre tabindex="0"><code class="language-pseudocode" data-lang="pseudocode">optional, get emails V3
+When I tried to build the flow, I thought I could use Get emails (V3). After I tried I realised that there is no info in the body, but it doesn&rsquo;t have the categories information, and the most important thing is it may consume more API if I use it first."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://blog.nelettech.com/posts/"},{"@type":"ListItem","position":2,"name":"Power Automate: Filter Emails Which Have No Category","item":"https://blog.nelettech.com/posts/2025/05/how-to-filter-email-category/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Power Automate: Filter Emails Which Have No Category","name":"Power Automate: Filter Emails Which Have No Category","description":"In this Article I want to show you how to filter no category email in outlook via Power Automate. In current Outlook 365 connector, there is no option to filter out emails with/without categories.\nWhen I tried to build the flow, I thought I could use Get emails (V3). After I tried I realised that there is no info in the body, but it doesn\u0026rsquo;t have the categories information, and the most important thing is it may consume more API if I use it first.\n","keywords":[],"articleBody":"In this Article I want to show you how to filter no category email in outlook via Power Automate. In current Outlook 365 connector, there is no option to filter out emails with/without categories.\nWhen I tried to build the flow, I thought I could use Get emails (V3). After I tried I realised that there is no info in the body, but it doesn’t have the categories information, and the most important thing is it may consume more API if I use it first.\nBelow is an example of one message structure from Get emails (V3) output body value.\n{ \"id\": \"value\", \"receivedDateTime\": \"\", \"hasAttachments\": false, \"internetMessageId\": \"\", \"subject\": \"\", \"bodyPreview\": \"Hi...\", \"importance\": \"normal\", \"conversationId\": \"\", \"isRead\": false, \"isHtml\": true, \"body\": \"html body\", \"from\": \"\", \"toRecipients\": \"\", \"attachments\": [] }, After check each actions, one option can be used is Send an HTTP request within Outlook 365 connector.combine with Get emails (V3)\nUse Send an HTTP request This action construct a Microsoft Graph REST API request to invoke. These segments are supported:\n1st segment: /me, /users/ 2nd segment: messages, mailFolders, events, calendar, calendars, outlook, inferenceClassification https://graph.microsoft.com/v1.0/me/messages will be the way to go. But I only want to check my inbox and unread messages.\nhttps://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages/{messageID} will be perfect for me.\nFor demonstrate purpose，pseudocode as below：\noptional, get emails V3\rSend an request to query inbox message and apply to unread message.\rFilter if any uncategorized message.\rFor each message found, assign category. What won’t work: Use Odata filter filter=categories eq null //not work filter=categories in //not work filter=categories/any(c:c eq '')//not work filter=categories/any(c:c eq null)//not work filter=categories/any(c:c eq 'null')//not work filter=categories/any(c:c eq '')//not work filter=not categories/any() //only work with /me/messages without messgeid varible of course, if purely filter message box only it will work. Use condition equals(item()?['categories'], null) //not work. equals(length(item()?['categories']), 0)) //nope Does WORK. empty(item()?['categories']) //Returns true if the object, array, or string is empty. Yes, this is the right one for this scenario.\nFlow overview. Flow break down: Initialize variable for OData query { \"type\": \"InitializeVariable\", \"inputs\": { \"variables\": [ { \"name\": \"MyQuery\", \"type\": \"string\", \"value\": \"filter=isRead eq false\u0026$select=categories\u0026$top=10\" } ] }, \"runAfter\": {} } Send an HTTP request { \"type\": \"OpenApiConnection\", \"inputs\": { \"parameters\": { \"Uri\": \"https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages?$@{variables('MyQuery')}\", \"Method\": \"GET\", \"ContentType\": \"application/json\" }, \"host\": { \"apiId\": \"/providers/Microsoft.PowerApps/apis/shared_office365\", \"connection\": \"shared_office365\", \"operationId\": \"HttpRequest\" } }, \"runAfter\": { \"Initialize_variable_for_OData_query\": [ \"Succeeded\" ] } } Filter array only uncategorized message { \"type\": \"Query\", \"inputs\": { \"from\": \"@body('Send_an_HTTP_request')?['value']\", \"where\": \"@empty(item()?['categories'])\" }, \"runAfter\": { \"Send_an_HTTP_request\": [ \"Succeeded\" ] } } For each uncategorized message { \"type\": \"Foreach\", \"foreach\": \"@outputs('Filter_array_only_uncategorized_message')['body']\", \"actions\": { \"Assigns_an_Outlook_category\": { \"type\": \"OpenApiConnection\", \"inputs\": { \"parameters\": { \"messageId\": \"@items('For_each_uncategorized_message')?['id']\", \"category\": \"FollowUP\" //Your category name. }, \"host\": { \"apiId\": \"/providers/Microsoft.PowerApps/apis/shared_office365\", \"connection\": \"shared_office365\", \"operationId\": \"AssignCategory\" } } } }, \"runAfter\": { \"Filter_array_only_uncategorized_message\": [ \"Succeeded\" ] } } Assigns an Outlook category { \"type\": \"OpenApiConnection\", \"inputs\": { \"parameters\": { \"messageId\": \"@items('For_each_uncategorized_message')?['id']\", \"category\": \"FollowUP\" }, \"host\": { \"apiId\": \"/providers/Microsoft.PowerApps/apis/shared_office365\", \"connection\": \"shared_office365\", \"operationId\": \"AssignCategory\" } } } Compare another one I created before which consume more API. Note: The examples shown use only generic and safe identifiers. Always review your own flow exports for sensitive info before sharing publicly.\nEnjoy.\n","wordCount":"522","inLanguage":"en","datePublished":"2025-05-24T00:00:00Z","dateModified":"2025-05-24T00:00:00Z","mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.nelettech.com/posts/2025/05/how-to-filter-email-category/"},"publisher":{"@type":"Organization","name":"Telen's Blog","logo":{"@type":"ImageObject","url":"https://blog.nelettech.com/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://blog.nelettech.com/ accesskey=h title="Telen's Blog (Alt + H)">Telen's Blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button><ul class=lang-switch><li>|</li><li><a href=https://blog.nelettech.com/profilemode/ title=Profilemode aria-label=Profilemode>Profilemode</a></li></ul></div></div><ul id=menu><li><a href=https://blog.nelettech.com/archives title=Archive><span>Archive</span></a></li><li><a href=https://blog.nelettech.com/search/ title=Search><span>Search</span></a></li><li><a href=https://blog.nelettech.com/tags/ title=Tags><span>Tags</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Power Automate: Filter Emails Which Have No Category</h1><div class=post-meta><span title='2025-05-24 00:00:00 +0000 UTC'>May 24, 2025</span></div></header><div class=post-content><h3 id=in-this-article-i-want-to-show-you-how-to-filter-no-category-email-in-outlook-via-power-automate>In this Article I want to show you how to filter no category email in outlook via Power Automate.<a hidden class=anchor aria-hidden=true href=#in-this-article-i-want-to-show-you-how-to-filter-no-category-email-in-outlook-via-power-automate>#</a></h3><p>In current Outlook 365 connector, there is no option to filter out emails with/without categories.</p><p>When I tried to build the flow, I thought I could use <code>Get emails (V3)</code>. After I tried I realised that there is no info in the body, but it doesn&rsquo;t have the categories information, and the <code>most important thing is it may consume more API if I use it first</code>.</p><p>Below is an example of one message structure from <code>Get emails (V3)</code> output body value.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl>            <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=nt>&#34;id&#34;</span><span class=p>:</span> <span class=s2>&#34;value&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=nt>&#34;receivedDateTime&#34;</span><span class=p>:</span> <span class=s2>&#34;&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=nt>&#34;hasAttachments&#34;</span><span class=p>:</span> <span class=kc>false</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=nt>&#34;internetMessageId&#34;</span><span class=p>:</span> <span class=s2>&#34;&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=nt>&#34;subject&#34;</span><span class=p>:</span> <span class=s2>&#34;&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=nt>&#34;bodyPreview&#34;</span><span class=p>:</span> <span class=s2>&#34;Hi...&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=nt>&#34;importance&#34;</span><span class=p>:</span> <span class=s2>&#34;normal&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=nt>&#34;conversationId&#34;</span><span class=p>:</span> <span class=s2>&#34;&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=nt>&#34;isRead&#34;</span><span class=p>:</span> <span class=kc>false</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=nt>&#34;isHtml&#34;</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=nt>&#34;body&#34;</span><span class=p>:</span> <span class=s2>&#34;html body&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=nt>&#34;from&#34;</span><span class=p>:</span> <span class=s2>&#34;&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=nt>&#34;toRecipients&#34;</span><span class=p>:</span> <span class=s2>&#34;&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                <span class=nt>&#34;attachments&#34;</span><span class=p>:</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span><span class=err>,</span>
+</span></span></code></pre></div><p>After check each actions, one option can be used is <code>Send an HTTP request</code> within Outlook 365 connector.combine with <em><strong>Get emails (V3)</strong></em></p><h3 id=use-send-an-http-request>Use <code>Send an HTTP request</code><a hidden class=anchor aria-hidden=true href=#use-send-an-http-request>#</a></h3><p>This action construct a Microsoft Graph REST API request to invoke. These segments are supported:</p><ol><li>1st segment: /me, /users/</li><li>2nd segment: messages, mailFolders, events, calendar, calendars, outlook, inferenceClassification</li></ol><p><a href=https://graph.microsoft.com/v1.0/me/messages>https://graph.microsoft.com/v1.0/me/messages</a> will be the way to go. But I only want to check my inbox and unread messages.</p><p><a href=https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages/%7BmessageID%7D>https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages/{messageID}</a> will be perfect for me.</p><p>For demonstrate purpose，pseudocode as below：</p><pre tabindex=0><code class=language-pseudocode data-lang=pseudocode>optional, get emails V3
 Send an request to query inbox message and apply to unread message.
 Filter if any uncategorized message.
 For each message found, assign category.
-</code></pre><h3 id="what-wont-work">What won&rsquo;t work:<a hidden class="anchor" aria-hidden="true" href="#what-wont-work">#</a></h3>
-<ol>
-<li>
-<h5 id="use-odata-filter">Use Odata filter<a hidden class="anchor" aria-hidden="true" href="#use-odata-filter">#</a></h5>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">filter=categories</span> <span class="err">eq</span> <span class="kc">null</span> <span class="c1">//not work
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">filter=categories</span> <span class="err">in</span> <span class="c1">//not work
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">filter=categories/any(c:c</span> <span class="err">eq</span> <span class="err">&#39;&#39;)</span><span class="c1">//not work
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">filter=categories/any(c:c</span> <span class="err">eq</span> <span class="kc">null</span><span class="err">)</span><span class="c1">//not work
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">filter=categories/any(c:c</span> <span class="err">eq</span> <span class="err">&#39;</span><span class="kc">null</span><span class="err">&#39;)</span><span class="c1">//not work
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">filter=categories/any(c:c</span> <span class="err">eq</span> <span class="err">&#39;&#39;)</span><span class="c1">//not work
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">filter=not</span> <span class="err">categories/any()</span> <span class="c1">//only work with /me/messages without messgeid varible of course, if purely filter message box only it will work.
-</span></span></span></code></pre></div></li>
-<li>
-<h5 id="use-condition">Use condition<a hidden class="anchor" aria-hidden="true" href="#use-condition">#</a></h5>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">equals(item()?</span><span class="p">[</span><span class="err">&#39;categories&#39;</span><span class="p">]</span><span class="err">,</span> <span class="kc">null</span><span class="err">)</span> <span class="c1">//not work.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">equals(length(item()?</span><span class="p">[</span><span class="err">&#39;categories&#39;</span><span class="p">]</span><span class="err">),</span> <span class="mi">0</span><span class="err">))</span> <span class="c1">//nope
-</span></span></span></code></pre></div></li>
-</ol>
-<h3 id="does-work">Does WORK.<a hidden class="anchor" aria-hidden="true" href="#does-work">#</a></h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">empty(item()?</span><span class="p">[</span><span class="err">&#39;categories&#39;</span><span class="p">]</span><span class="err">)</span>
-</span></span><span class="line"><span class="cl"><span class="c1">//Returns true if the object, array, or string is empty.
-</span></span></span></code></pre></div><p>Yes, this is the right one for this scenario.</p>
-<h3 id="flow-overview">Flow overview.<a hidden class="anchor" aria-hidden="true" href="#flow-overview">#</a></h3>
-<p><img loading="lazy" src="/flowOverview.png"></p>
-<h3 id="flow-break-down">Flow break down:<a hidden class="anchor" aria-hidden="true" href="#flow-break-down">#</a></h3>
-<ol>
-<li>
-<h5 id="initialize-variable-for-odata-query">Initialize variable for OData query<a hidden class="anchor" aria-hidden="true" href="#initialize-variable-for-odata-query">#</a></h5>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;InitializeVariable&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;variables&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">      <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;MyQuery&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;string&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;filter=isRead eq false&amp;$select=categories&amp;$top=10&#34;</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">]</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div></li>
-<li>
-<h5 id="send-an-http-request">Send an HTTP request<a hidden class="anchor" aria-hidden="true" href="#send-an-http-request">#</a></h5>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;OpenApiConnection&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;Uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages?$@{variables(&#39;MyQuery&#39;)}&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;Method&#34;</span><span class="p">:</span> <span class="s2">&#34;GET&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;ContentType&#34;</span><span class="p">:</span> <span class="s2">&#34;application/json&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;host&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;apiId&#34;</span><span class="p">:</span> <span class="s2">&#34;/providers/Microsoft.PowerApps/apis/shared_office365&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;connection&#34;</span><span class="p">:</span> <span class="s2">&#34;shared_office365&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;operationId&#34;</span><span class="p">:</span> <span class="s2">&#34;HttpRequest&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;Initialize_variable_for_OData_query&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Succeeded&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">]</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div></li>
-<li>
-<h5 id="filter-array-only-uncategorized-message">Filter array only uncategorized message<a hidden class="anchor" aria-hidden="true" href="#filter-array-only-uncategorized-message">#</a></h5>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Query&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;from&#34;</span><span class="p">:</span> <span class="s2">&#34;@body(&#39;Send_an_HTTP_request&#39;)?[&#39;value&#39;]&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;where&#34;</span><span class="p">:</span> <span class="s2">&#34;@empty(item()?[&#39;categories&#39;])&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;Send_an_HTTP_request&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Succeeded&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">]</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div></li>
-<li>
-<h5 id="for-each-uncategorized-message">For each uncategorized message<a hidden class="anchor" aria-hidden="true" href="#for-each-uncategorized-message">#</a></h5>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;Foreach&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;foreach&#34;</span><span class="p">:</span> <span class="s2">&#34;@outputs(&#39;Filter_array_only_uncategorized_message&#39;)[&#39;body&#39;]&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;actions&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;Assigns_an_Outlook_category&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;OpenApiConnection&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="nt">&#34;messageId&#34;</span><span class="p">:</span> <span class="s2">&#34;@items(&#39;For_each_uncategorized_message&#39;)?[&#39;id&#39;]&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="nt">&#34;category&#34;</span><span class="p">:</span> <span class="s2">&#34;FollowUP&#34;</span> <span class="c1">//Your category name.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">},</span>
-</span></span><span class="line"><span class="cl">        <span class="nt">&#34;host&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="nt">&#34;apiId&#34;</span><span class="p">:</span> <span class="s2">&#34;/providers/Microsoft.PowerApps/apis/shared_office365&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="nt">&#34;connection&#34;</span><span class="p">:</span> <span class="s2">&#34;shared_office365&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="nt">&#34;operationId&#34;</span><span class="p">:</span> <span class="s2">&#34;AssignCategory&#34;</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;runAfter&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;Filter_array_only_uncategorized_message&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Succeeded&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">]</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div></li>
-<li>
-<h5 id="assigns-an-outlook-category">Assigns an Outlook category<a hidden class="anchor" aria-hidden="true" href="#assigns-an-outlook-category">#</a></h5>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;OpenApiConnection&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;inputs&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;parameters&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;messageId&#34;</span><span class="p">:</span> <span class="s2">&#34;@items(&#39;For_each_uncategorized_message&#39;)?[&#39;id&#39;]&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;category&#34;</span><span class="p">:</span> <span class="s2">&#34;FollowUP&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;host&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;apiId&#34;</span><span class="p">:</span> <span class="s2">&#34;/providers/Microsoft.PowerApps/apis/shared_office365&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;connection&#34;</span><span class="p">:</span> <span class="s2">&#34;shared_office365&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">      <span class="nt">&#34;operationId&#34;</span><span class="p">:</span> <span class="s2">&#34;AssignCategory&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div></li>
-</ol>
-<h3 id="compare-another-one-i-created-before-which-consume-more-api">Compare another one I created before which consume more API.<a hidden class="anchor" aria-hidden="true" href="#compare-another-one-i-created-before-which-consume-more-api">#</a></h3>
-<p><img alt="FilterNonCategoryEmail" loading="lazy" src="/FilterNonCategoryEmail.gif"></p>
-<p><strong>Note:</strong> The examples shown use only generic and safe identifiers. Always review your own flow exports for sensitive info before sharing publicly.</p>
-<p>Enjoy.</p>
-
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-    </ul>
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2025 <a href="https://blog.nelettech.com/">Telen&#39;s Blog</a></span> · 
-
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+</code></pre><h3 id=what-wont-work>What won&rsquo;t work:<a hidden class=anchor aria-hidden=true href=#what-wont-work>#</a></h3><ol><li><h5 id=use-odata-filter>Use Odata filter<a hidden class=anchor aria-hidden=true href=#use-odata-filter>#</a></h5><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=err>filter=categories</span> <span class=err>eq</span> <span class=kc>null</span> <span class=c1>//not work
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=err>filter=categories</span> <span class=err>in</span> <span class=c1>//not work
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=err>filter=categories/any(c:c</span> <span class=err>eq</span> <span class=err>&#39;&#39;)</span><span class=c1>//not work
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=err>filter=categories/any(c:c</span> <span class=err>eq</span> <span class=kc>null</span><span class=err>)</span><span class=c1>//not work
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=err>filter=categories/any(c:c</span> <span class=err>eq</span> <span class=err>&#39;</span><span class=kc>null</span><span class=err>&#39;)</span><span class=c1>//not work
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=err>filter=categories/any(c:c</span> <span class=err>eq</span> <span class=err>&#39;&#39;)</span><span class=c1>//not work
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=err>filter=not</span> <span class=err>categories/any()</span> <span class=c1>//only work with /me/messages without messgeid varible of course, if purely filter message box only it will work.
+</span></span></span></code></pre></div></li><li><h5 id=use-condition>Use condition<a hidden class=anchor aria-hidden=true href=#use-condition>#</a></h5><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=err>equals(item()?</span><span class=p>[</span><span class=err>&#39;categories&#39;</span><span class=p>]</span><span class=err>,</span> <span class=kc>null</span><span class=err>)</span> <span class=c1>//not work.
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=err>equals(length(item()?</span><span class=p>[</span><span class=err>&#39;categories&#39;</span><span class=p>]</span><span class=err>),</span> <span class=mi>0</span><span class=err>))</span> <span class=c1>//nope
+</span></span></span></code></pre></div></li></ol><h3 id=does-work>Does WORK.<a hidden class=anchor aria-hidden=true href=#does-work>#</a></h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=err>empty(item()?</span><span class=p>[</span><span class=err>&#39;categories&#39;</span><span class=p>]</span><span class=err>)</span>
+</span></span><span class=line><span class=cl><span class=c1>//Returns true if the object, array, or string is empty.
+</span></span></span></code></pre></div><p>Yes, this is the right one for this scenario.</p><h3 id=flow-overview>Flow overview.<a hidden class=anchor aria-hidden=true href=#flow-overview>#</a></h3><p><img loading=lazy src=/flowOverview.png></p><h3 id=flow-break-down>Flow break down:<a hidden class=anchor aria-hidden=true href=#flow-break-down>#</a></h3><ol><li><h5 id=initialize-variable-for-odata-query>Initialize variable for OData query<a hidden class=anchor aria-hidden=true href=#initialize-variable-for-odata-query>#</a></h5><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;InitializeVariable&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;inputs&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;variables&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>      <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;name&#34;</span><span class=p>:</span> <span class=s2>&#34;MyQuery&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;string&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;value&#34;</span><span class=p>:</span> <span class=s2>&#34;filter=isRead eq false&amp;$select=categories&amp;$top=10&#34;</span>
+</span></span><span class=line><span class=cl>      <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>]</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;runAfter&#34;</span><span class=p>:</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li><li><h5 id=send-an-http-request>Send an HTTP request<a hidden class=anchor aria-hidden=true href=#send-an-http-request>#</a></h5><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;OpenApiConnection&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;inputs&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;parameters&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;Uri&#34;</span><span class=p>:</span> <span class=s2>&#34;https://graph.microsoft.com/v1.0/me/mailFolders/Inbox/messages?$@{variables(&#39;MyQuery&#39;)}&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;Method&#34;</span><span class=p>:</span> <span class=s2>&#34;GET&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;ContentType&#34;</span><span class=p>:</span> <span class=s2>&#34;application/json&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;host&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;apiId&#34;</span><span class=p>:</span> <span class=s2>&#34;/providers/Microsoft.PowerApps/apis/shared_office365&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;connection&#34;</span><span class=p>:</span> <span class=s2>&#34;shared_office365&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;operationId&#34;</span><span class=p>:</span> <span class=s2>&#34;HttpRequest&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;runAfter&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;Initialize_variable_for_OData_query&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>      <span class=s2>&#34;Succeeded&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>]</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li><li><h5 id=filter-array-only-uncategorized-message>Filter array only uncategorized message<a hidden class=anchor aria-hidden=true href=#filter-array-only-uncategorized-message>#</a></h5><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;Query&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;inputs&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;from&#34;</span><span class=p>:</span> <span class=s2>&#34;@body(&#39;Send_an_HTTP_request&#39;)?[&#39;value&#39;]&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;where&#34;</span><span class=p>:</span> <span class=s2>&#34;@empty(item()?[&#39;categories&#39;])&#34;</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;runAfter&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;Send_an_HTTP_request&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>      <span class=s2>&#34;Succeeded&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>]</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li><li><h5 id=for-each-uncategorized-message>For each uncategorized message<a hidden class=anchor aria-hidden=true href=#for-each-uncategorized-message>#</a></h5><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;Foreach&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;foreach&#34;</span><span class=p>:</span> <span class=s2>&#34;@outputs(&#39;Filter_array_only_uncategorized_message&#39;)[&#39;body&#39;]&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;actions&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;Assigns_an_Outlook_category&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;OpenApiConnection&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;inputs&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;parameters&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;messageId&#34;</span><span class=p>:</span> <span class=s2>&#34;@items(&#39;For_each_uncategorized_message&#39;)?[&#39;id&#39;]&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;category&#34;</span><span class=p>:</span> <span class=s2>&#34;FollowUP&#34;</span> <span class=c1>//Your category name.
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=p>},</span>
+</span></span><span class=line><span class=cl>        <span class=nt>&#34;host&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;apiId&#34;</span><span class=p>:</span> <span class=s2>&#34;/providers/Microsoft.PowerApps/apis/shared_office365&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;connection&#34;</span><span class=p>:</span> <span class=s2>&#34;shared_office365&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>          <span class=nt>&#34;operationId&#34;</span><span class=p>:</span> <span class=s2>&#34;AssignCategory&#34;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>      <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>},</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;runAfter&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;Filter_array_only_uncategorized_message&#34;</span><span class=p>:</span> <span class=p>[</span>
+</span></span><span class=line><span class=cl>      <span class=s2>&#34;Succeeded&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>]</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li><li><h5 id=assigns-an-outlook-category>Assigns an Outlook category<a hidden class=anchor aria-hidden=true href=#assigns-an-outlook-category>#</a></h5><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;type&#34;</span><span class=p>:</span> <span class=s2>&#34;OpenApiConnection&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>  <span class=nt>&#34;inputs&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;parameters&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;messageId&#34;</span><span class=p>:</span> <span class=s2>&#34;@items(&#39;For_each_uncategorized_message&#39;)?[&#39;id&#39;]&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;category&#34;</span><span class=p>:</span> <span class=s2>&#34;FollowUP&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>},</span>
+</span></span><span class=line><span class=cl>    <span class=nt>&#34;host&#34;</span><span class=p>:</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;apiId&#34;</span><span class=p>:</span> <span class=s2>&#34;/providers/Microsoft.PowerApps/apis/shared_office365&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;connection&#34;</span><span class=p>:</span> <span class=s2>&#34;shared_office365&#34;</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>      <span class=nt>&#34;operationId&#34;</span><span class=p>:</span> <span class=s2>&#34;AssignCategory&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div></li></ol><h3 id=compare-another-one-i-created-before-which-consume-more-api>Compare another one I created before which consume more API.<a hidden class=anchor aria-hidden=true href=#compare-another-one-i-created-before-which-consume-more-api>#</a></h3><p><img alt=FilterNonCategoryEmail loading=lazy src=/FilterNonCategoryEmail.gif></p><p><strong>Note:</strong> The examples shown use only generic and safe identifiers. Always review your own flow exports for sensitive info before sharing publicly.</p><p>Enjoy.</p></div><footer class=post-footer><ul class=post-tags></ul></footer></article></main><footer class=footer><span>&copy; 2025 <a href=https://blog.nelettech.com/>Telen's Blog</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>
