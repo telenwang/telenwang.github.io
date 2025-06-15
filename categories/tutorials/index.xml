@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tutorials on Telen&#39;s Blog</title>
+    <link>https://blog.nelettech.com/categories/tutorials/</link>
+    <description>Recent content in Tutorials on Telen&#39;s Blog</description>
+    <generator>Hugo -- 0.145.0</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 14 Jun 2025 10:00:00 +0200</lastBuildDate>
+    <atom:link href="https://blog.nelettech.com/categories/tutorials/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Power Canvas App: Looping marquee text</title>
+      <link>https://blog.nelettech.com/posts/2025/06/powerappslooping-marquee-text/</link>
+      <pubDate>Sat, 14 Jun 2025 10:00:00 +0200</pubDate>
+      <guid>https://blog.nelettech.com/posts/2025/06/powerappslooping-marquee-text/</guid>
+      <description>&lt;p&gt;Ever wanted to add dynamic content to your Power Apps to highlight key information?&lt;/p&gt;
+&lt;p&gt;This article I will explorer an approach for looping marquee text for a text input control.&lt;/p&gt;
+&lt;p&gt;The demonstration use Authoring Version: 3.25061.7,and enabled &amp;lsquo;Modern controls and themes&amp;rsquo;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;image-20250614154416783&#34; loading=&#34;lazy&#34; src=&#34;https://blog.nelettech.com/image-20250614154416783.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Effect first:&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;https://blog.nelettech.com/loopingmarquee3.gif&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Prepare the app.&lt;/p&gt;
+&lt;h3 id=&#34;1-insert-controls-in-a-blank-screen&#34;&gt;1. Insert controls in a blank screen：&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;One text label control: TextCanvas1&lt;/p&gt;
+&lt;p&gt;Text= &lt;code&gt;&amp;quot;While Montaigne&#39;s philosophy was admired and copied in France, none of his most immediate disciples tried to write essays.&amp;quot;&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Power Automate: SharePoint List to populate Word Template</title>
+      <link>https://blog.nelettech.com/posts/2025/06/listpopulatewordtemplate/</link>
+      <pubDate>Fri, 06 Jun 2025 10:00:00 +0200</pubDate>
+      <guid>https://blog.nelettech.com/posts/2025/06/listpopulatewordtemplate/</guid>
+      <description>&lt;p&gt;In many organizations, creating standardized documents populated with up-to-date data can be both time-consuming and error-prone. By leveraging Power Automate to pull information directly from a SharePoint list and inject it into a Word template, you can eliminate manual copy-and-paste steps, ensure consistency, and accelerate your document-generation process. In this article, we’ll walk through how to build a flow that retrieves list items, maps fields to placeholders in a Word template, and outputs a fully formatted document—seamlessly bridging SharePoint data with professional Word reports.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
