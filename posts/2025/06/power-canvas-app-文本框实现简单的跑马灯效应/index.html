@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Power Canvas App: SharePoint List to populate Word Template | Telen&#39;s Blog</title>
+<meta name="keywords" content="Power Automate, SharePoint, Word, Automation">
+<meta name="description" content="Power Canvas App: 文本框实现简单的跑马灯效应
+本文将展示一种如何实现文本框跑马灯效应的方法.
+本示例使用Authoring Version: 3.25061.7,并启用.
+
+先展示效果：
+
+准备程序.
+1. 在空白屏幕插入以下控件：
+
+
+一个文本标签: TextCanvas1
+Text= &quot;While Montaigne&#39;s philosophy was admired and copied in France, none of his most immediate disciples tried to write essays.&quot;
+
+
+一个文本框: TextInputCanvas1, 用来动态显示文本标签的文本.
+
+
+Timer控件，用来创建循环效果.
+
+
+2. 使用Left() 和Right() 构造动态内容.
+如何构造动态的文本框内容？ 我第一个想到的是使用Left() 和Right() 组合来构建.
+官网参考：Left, Mid, and Right functions
+这几个函数有两种用法，一种针对字符串，另一种针对单列表类型. 在这里我们只用字符串类型.
+语法:
+Left( String, NumberOfCharacters ) 和 Right( String, NumberOfCharacters )
+为了构建动态值，Left() &#43;Right()  应该等于 TextCanvas1.Text， 所以我们要从字符串的长度着手.
+为了让字符串的值动态的变化，引入timer控件来操作字符串.">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/2025/06/power-canvas-app-%E6%96%87%E6%9C%AC%E6%A1%86%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E8%B7%91%E9%A9%AC%E7%81%AF%E6%95%88%E5%BA%94/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a030e887a7dd3c3f3918e4cc113129361414bda.css" integrity="sha256-bammPSWpYIvKL3&#43;QegMOiHp908PzkY5MwRMSk2FBS9o=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2025/06/power-canvas-app-%E6%96%87%E6%9C%AC%E6%A1%86%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E8%B7%91%E9%A9%AC%E7%81%AF%E6%95%88%E5%BA%94/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="http://localhost:1313/posts/2025/06/power-canvas-app-%E6%96%87%E6%9C%AC%E6%A1%86%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E8%B7%91%E9%A9%AC%E7%81%AF%E6%95%88%E5%BA%94/">
+  <meta property="og:site_name" content="Telen&#39;s Blog">
+  <meta property="og:title" content="Power Canvas App: SharePoint List to populate Word Template">
+  <meta property="og:description" content="Power Canvas App: 文本框实现简单的跑马灯效应
+本文将展示一种如何实现文本框跑马灯效应的方法.
+本示例使用Authoring Version: 3.25061.7,并启用.
+先展示效果：
+准备程序.
+1. 在空白屏幕插入以下控件： 一个文本标签: TextCanvas1
+Text= &#34;While Montaigne&#39;s philosophy was admired and copied in France, none of his most immediate disciples tried to write essays.&#34;
+一个文本框: TextInputCanvas1, 用来动态显示文本标签的文本.
+Timer控件，用来创建循环效果.
+2. 使用Left() 和Right() 构造动态内容. 如何构造动态的文本框内容？ 我第一个想到的是使用Left() 和Right() 组合来构建.
+官网参考：Left, Mid, and Right functions
+这几个函数有两种用法，一种针对字符串，另一种针对单列表类型. 在这里我们只用字符串类型.
+语法:
+Left( String, NumberOfCharacters ) 和 Right( String, NumberOfCharacters )
+为了构建动态值，Left() &#43;Right() 应该等于 TextCanvas1.Text， 所以我们要从字符串的长度着手.
+为了让字符串的值动态的变化，引入timer控件来操作字符串.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-14T10:00:00+02:00">
+    <meta property="article:modified_time" content="2025-06-14T10:00:00+02:00">
+    <meta property="article:tag" content="Power Automate">
+    <meta property="article:tag" content="SharePoint">
+    <meta property="article:tag" content="Word">
+    <meta property="article:tag" content="Automation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Power Canvas App: SharePoint List to populate Word Template">
+<meta name="twitter:description" content="Power Canvas App: 文本框实现简单的跑马灯效应
+本文将展示一种如何实现文本框跑马灯效应的方法.
+本示例使用Authoring Version: 3.25061.7,并启用.
+
+先展示效果：
+
+准备程序.
+1. 在空白屏幕插入以下控件：
+
+
+一个文本标签: TextCanvas1
+Text= &quot;While Montaigne&#39;s philosophy was admired and copied in France, none of his most immediate disciples tried to write essays.&quot;
+
+
+一个文本框: TextInputCanvas1, 用来动态显示文本标签的文本.
+
+
+Timer控件，用来创建循环效果.
+
+
+2. 使用Left() 和Right() 构造动态内容.
+如何构造动态的文本框内容？ 我第一个想到的是使用Left() 和Right() 组合来构建.
+官网参考：Left, Mid, and Right functions
+这几个函数有两种用法，一种针对字符串，另一种针对单列表类型. 在这里我们只用字符串类型.
+语法:
+Left( String, NumberOfCharacters ) 和 Right( String, NumberOfCharacters )
+为了构建动态值，Left() &#43;Right()  应该等于 TextCanvas1.Text， 所以我们要从字符串的长度着手.
+为了让字符串的值动态的变化，引入timer控件来操作字符串.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "http://localhost:1313/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Power Canvas App: SharePoint List to populate Word Template",
+      "item": "http://localhost:1313/posts/2025/06/power-canvas-app-%E6%96%87%E6%9C%AC%E6%A1%86%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E8%B7%91%E9%A9%AC%E7%81%AF%E6%95%88%E5%BA%94/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Power Canvas App: SharePoint List to populate Word Template",
+  "name": "Power Canvas App: SharePoint List to populate Word Template",
+  "description": "Power Canvas App: 文本框实现简单的跑马灯效应\n本文将展示一种如何实现文本框跑马灯效应的方法.\n本示例使用Authoring Version: 3.25061.7,并启用.\n先展示效果：\n准备程序.\n1. 在空白屏幕插入以下控件： 一个文本标签: TextCanvas1\nText= \u0026quot;While Montaigne's philosophy was admired and copied in France, none of his most immediate disciples tried to write essays.\u0026quot;\n一个文本框: TextInputCanvas1, 用来动态显示文本标签的文本.\nTimer控件，用来创建循环效果.\n2. 使用Left() 和Right() 构造动态内容. 如何构造动态的文本框内容？ 我第一个想到的是使用Left() 和Right() 组合来构建.\n官网参考：Left, Mid, and Right functions\n这几个函数有两种用法，一种针对字符串，另一种针对单列表类型. 在这里我们只用字符串类型.\n语法:\nLeft( String, NumberOfCharacters ) 和 Right( String, NumberOfCharacters )\n为了构建动态值，Left() +Right() 应该等于 TextCanvas1.Text， 所以我们要从字符串的长度着手.\n为了让字符串的值动态的变化，引入timer控件来操作字符串.\n",
+  "keywords": [
+    "Power Automate", "SharePoint", "Word", "Automation"
+  ],
+  "articleBody": "Power Canvas App: 文本框实现简单的跑马灯效应\n本文将展示一种如何实现文本框跑马灯效应的方法.\n本示例使用Authoring Version: 3.25061.7,并启用.\n先展示效果：\n准备程序.\n1. 在空白屏幕插入以下控件： 一个文本标签: TextCanvas1\nText= \"While Montaigne's philosophy was admired and copied in France, none of his most immediate disciples tried to write essays.\"\n一个文本框: TextInputCanvas1, 用来动态显示文本标签的文本.\nTimer控件，用来创建循环效果.\n2. 使用Left() 和Right() 构造动态内容. 如何构造动态的文本框内容？ 我第一个想到的是使用Left() 和Right() 组合来构建.\n官网参考：Left, Mid, and Right functions\n这几个函数有两种用法，一种针对字符串，另一种针对单列表类型. 在这里我们只用字符串类型.\n语法:\nLeft( String, NumberOfCharacters ) 和 Right( String, NumberOfCharacters )\n为了构建动态值，Left() +Right() 应该等于 TextCanvas1.Text， 所以我们要从字符串的长度着手.\n为了让字符串的值动态的变化，引入timer控件来操作字符串.\nTimer: 这个控件的默认持续时间是60000毫秒，也就是60秒.\n我们可以设置duration的值为字符串的长度乘以100,然后repeat设置为true.\nLen(TextCanvas1.Text)*100 这样我们的Right公式即为：\nRight(\rTextCanvas1.Text,\rLen(TextCanvas1.Text) - Timer3.Value/100\r) 同理，Left的公式为：\nLeft(\rTextCanvas1.Text,\rTimer3.Value / 100\r) 拼凑在一起赋给TextInputCanvas1的Value:\nRight(\rTextCanvas1.Text,\rLen(TextCanvas1.Text) - Timer3.Value/100\r) \u0026 \" \" //add some spaces for buffer\r\u0026 Left(\rTextCanvas1.Text,\rTimer3.Value / 100\r) 3. 使用mid() 和***Mod()***来构造动态内容 Mid( String, StartingPosition [, NumberOfCharacters ] )\nMod( Number, Divisor )\n我们知道可以构建*Timer1*.Value / 100 \u003c= Len(*TextCanvas1*.Text).\n所以：\nMod(Timer1.Value / 100, Len(TextCanvas1.Text)+1 ) 这个公式的值永远都会小于等于所给字符串的长度.\n考虑到***Mid()的第二个参数至少是1， 我们引入Max()***函数.\nMid(\rTextCanvas1.Text \u0026 \" \" \u0026 TextCanvas1.Text, //多加一个作为缓冲\rMax(1, Mod(Timer1.Value / 100, Len(TextCanvas1.Text)+1 )), 50 //可忽略\r) 效果如下：\n总结： 总体上来讲,渲染效果一般,不够丝滑. 我能想到的应用场景可能就是在程序顶部放个持续滚动的通知之类的.\n",
+  "wordCount" : "158",
+  "inLanguage": "en",
+  "datePublished": "2025-06-14T10:00:00+02:00",
+  "dateModified": "2025-06-14T10:00:00+02:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/posts/2025/06/power-canvas-app-%E6%96%87%E6%9C%AC%E6%A1%86%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E8%B7%91%E9%A9%AC%E7%81%AF%E6%95%88%E5%BA%94/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Telen's Blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="Telen&#39;s Blog (Alt + H)">Telen&#39;s Blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                    <li>
+                        <a href="http://localhost:1313/profilemode/" title="Profilemode"
+                            aria-label="Profilemode">Profilemode</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="Search">
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Power Canvas App: SharePoint List to populate Word Template
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="35" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h1>
+    <div class="post-meta"><span title='2025-06-14 10:00:00 +0200 CEST'>June 14, 2025</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Power Canvas App: 文本框实现简单的跑马灯效应</p>
+<p>本文将展示一种如何实现文本框跑马灯效应的方法.</p>
+<p>本示例使用Authoring Version: 3.25061.7,并启用.</p>
+<p><img alt="image-20250614154416783" loading="lazy" src="c:\\Users\\twg\\AppData\\Roaming\\Typora\\typora-user-images\\image-20250614154416783.png"></p>
+<p>先展示效果：</p>
+<p><img loading="lazy" src="c:\\Users\\twg\\Desktop\\loopingmarquee3.gif"></p>
+<p>准备程序.</p>
+<h3 id="1-在空白屏幕插入以下控件">1. 在空白屏幕插入以下控件：<a hidden class="anchor" aria-hidden="true" href="#1-在空白屏幕插入以下控件">#</a></h3>
+<ul>
+<li>
+<p>一个文本标签: TextCanvas1</p>
+<p>Text= <code>&quot;While Montaigne's philosophy was admired and copied in France, none of his most immediate disciples tried to write essays.&quot;</code></p>
+</li>
+<li>
+<p>一个文本框: TextInputCanvas1, 用来动态显示文本标签的文本.</p>
+</li>
+<li>
+<p>Timer控件，用来创建循环效果.</p>
+</li>
+</ul>
+<h3 id="2-使用left-和right-构造动态内容">2. 使用<em><strong>Left()</strong></em> 和<em><strong>Right()</strong></em> 构造动态内容.<a hidden class="anchor" aria-hidden="true" href="#2-使用left-和right-构造动态内容">#</a></h3>
+<p>如何构造动态的文本框内容？ 我第一个想到的是使用<em><strong>Left()</strong></em> 和<em><strong>Right()</strong></em> 组合来构建.</p>
+<p>官网参考：<a href="https://learn.microsoft.com/en-us/power-platform/power-fx/reference/function-left-mid-right">Left, Mid, and Right functions</a></p>
+<p>这几个函数有两种用法，一种针对字符串，另一种针对单列表类型. 在这里我们只用字符串类型.</p>
+<p>语法:</p>
+<p><strong>Left</strong>( <em>String</em>, <em>NumberOfCharacters</em> ) 和 <strong>Right</strong>( <em>String</em>, <em>NumberOfCharacters</em> )</p>
+<p>为了构建动态值，<em><strong>Left()</strong></em> +<em><strong>Right()</strong></em>  应该等于 TextCanvas1.Text， 所以我们要从字符串的长度着手.</p>
+<p>为了让字符串的值动态的变化，引入timer控件来操作字符串.</p>
+<p><a href="https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/controls/control-timer">Timer</a>:  这个控件的默认持续时间是60000毫秒，也就是60秒.</p>
+<p>我们可以设置duration的值为字符串的长度乘以100,然后repeat设置为true.</p>
+<pre tabindex="0"><code>Len(TextCanvas1.Text)*100
+</code></pre><p>这样我们的<strong>Right</strong>公式即为：</p>
+<pre tabindex="0"><code>Right(
+        TextCanvas1.Text,
+        Len(TextCanvas1.Text) - Timer3.Value/100
+)
+</code></pre><p>同理，<strong>Left</strong>的公式为：</p>
+<pre tabindex="0"><code> Left(
+    TextCanvas1.Text,
+    Timer3.Value / 100
+)
+</code></pre><p>拼凑在一起赋给TextInputCanvas1的Value:</p>
+<pre tabindex="0"><code>Right(
+        TextCanvas1.Text,
+        Len(TextCanvas1.Text) - Timer3.Value/100
+) &amp; &#34;        &#34; //add some spaces for buffer
+&amp; Left(
+    TextCanvas1.Text,
+    Timer3.Value / 100
+)
+</code></pre><h3 id="3-使用mid-和mod来构造动态内容">3. 使用<em><strong>mid()</strong></em> 和***Mod()***来构造动态内容<a hidden class="anchor" aria-hidden="true" href="#3-使用mid-和mod来构造动态内容">#</a></h3>
+<p><strong>Mid</strong>( <em>String</em>, <em>StartingPosition</em> [, <em>NumberOfCharacters</em> ] )</p>
+<p><strong>Mod</strong>( <em>Number</em>, <em>Divisor</em> )</p>
+<p>我们知道可以构建<code>*Timer1*.Value / 100</code> &lt;= <code>Len(*TextCanvas1*.Text)</code>.</p>
+<p>所以：</p>
+<pre tabindex="0"><code>Mod(Timer1.Value / 100, Len(TextCanvas1.Text)+1 )
+</code></pre><p>这个公式的值永远都会小于等于所给字符串的长度.</p>
+<p>考虑到***Mid()<em><strong>的第二个参数至少是1， 我们引入</strong></em>Max()***函数.</p>
+<pre tabindex="0"><code> Mid(
+    TextCanvas1.Text &amp; &#34;  &#34; &amp; TextCanvas1.Text, //多加一个作为缓冲
+    Max(1, Mod(Timer1.Value / 100, Len(TextCanvas1.Text)+1 )), 
+    50 //可忽略
+)
+</code></pre><p>效果如下：</p>
+<p><img loading="lazy" src="c:\\Users\\twg\\Desktop\\loopingmarquee2.gif"></p>
+<h3 id="总结">总结：<a hidden class="anchor" aria-hidden="true" href="#总结">#</a></h3>
+<p>总体上来讲,渲染效果一般,不够丝滑. 我能想到的应用场景可能就是在程序顶部放个持续滚动的通知之类的.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/power-automate/">Power Automate</a></li>
+      <li><a href="http://localhost:1313/tags/sharepoint/">SharePoint</a></li>
+      <li><a href="http://localhost:1313/tags/word/">Word</a></li>
+      <li><a href="http://localhost:1313/tags/automation/">Automation</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">Telen&#39;s Blog</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
