@@ -51,6 +51,9 @@ languages:
 
 params:
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  analytics:
+    google:
+      SiteVerificationTag: "0FquDNl2aNHqUT71m0SBl-q8Hi22fphgj-JdMuH8fUY"
 
   homeInfoParams:
     Title: "Hej/你好."
