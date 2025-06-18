@@ -13,6 +13,8 @@ categories:
 sitemap:
   priority: 0.7
   changefreq: weekly
+author: "Telen Wang"
+authorURL: "https://www.linkedin.com/in/telenwang"
 ---
 
 In many organizations, creating standardized documents populated with up-to-date data can be both time-consuming and error-prone. By leveraging Power Automate to pull information directly from a SharePoint list and inject it into a Word template, you can eliminate manual copy-and-paste steps, ensure consistency, and accelerate your document-generation process. In this article, we’ll walk through how to build a flow that retrieves list items, maps fields to placeholders in a Word template, and outputs a fully formatted document—seamlessly bridging SharePoint data with professional Word reports.

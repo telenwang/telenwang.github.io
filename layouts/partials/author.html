@@ -1,0 +1,16 @@
+{{- /* layouts/partials/author.html */ -}}
+{{- if or .Params.author site.Params.author }}
+  {{/* Pick the author name from page or site params */}}
+  {{- $author := (.Params.author | default site.Params.author) }}
+  {{/* Pick the author URL from front-matter or site params */}}
+  {{- $authorURL := (.Params.authorURL | default site.Params.authorURL) }}
+  {{- /* Determine if it's a list (unlikely for URL) */}}
+  {{- $urlType := (printf "%T" $authorURL) }}
+  {{- /* Render */}}
+  {{- if $authorURL -}}
+    <a href="{{ $authorURL | absURL }}">{{ $author }}</a>
+  {{- else -}}
+    {{- /* No URL: just text */}}
+    {{- $author }}
+  {{- end }}
+{{- end -}}
