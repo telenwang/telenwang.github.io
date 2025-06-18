@@ -9,7 +9,8 @@ tags:
   - function
 categories:
   - Tutorials
-url:"https://blog.nelettech.com"
+sitemap:
+  priority: 0.8
 ---
 
 Ever wanted to add dynamic content to your Power Apps to highlight key information?
