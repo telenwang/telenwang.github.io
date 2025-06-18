@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en" dir="auto">
-
-<head><meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="index, follow">
-<title>Power Canvas App: Looping marquee text | Telen&#39;s Blog</title>
-<meta name="keywords" content="Power Canvas app, function">
-<meta name="description" content="Ever wanted to add dynamic content to your Power Apps to highlight key information?
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Power Canvas App: Looping marquee text | Telen's Blog</title>
+<meta name=keywords content="Power Canvas app,function"><meta name=description content='Ever wanted to add dynamic content to your Power Apps to highlight key information?
 This article I will explorer an approach for looping marquee text for a text input control.
 The demonstration use Authoring Version: 3.25061.7,and enabled &lsquo;Modern controls and themes&rsquo;.
 
@@ -18,75 +10,13 @@ Prepare the app.
 
 
 One text label control: TextCanvas1
-Text= &quot;While Montaigne&#39;s philosophy was admired and copied in France, none of his most immediate disciples tried to write essays.&quot;">
-<meta name="author" content="Telen Wang">
-<link rel="canonical" href="https://blog.nelettech.com/posts/2025/06/powerappslooping-marquee-text/">
-<meta name="google-site-verification" content="0FquDNl2aNHqUT71m0SBl-q8Hi22fphgj-JdMuH8fUY" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a030e887a7dd3c3f3918e4cc113129361414bda.css" integrity="sha256-bammPSWpYIvKL3&#43;QegMOiHp908PzkY5MwRMSk2FBS9o=" rel="preload stylesheet" as="style">
-<link rel="icon" href="https://blog.nelettech.com/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="https://blog.nelettech.com/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="https://blog.nelettech.com/favicon-32x32.png">
-<link rel="apple-touch-icon" href="https://blog.nelettech.com/apple-touch-icon.png">
-<link rel="mask-icon" href="https://blog.nelettech.com/safari-pinned-tab.svg">
-<meta name="theme-color" content="#2e2e33">
-<meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="https://blog.nelettech.com/posts/2025/06/powerappslooping-marquee-text/">
-<noscript>
-    <style>
-        #theme-toggle,
-        .top-link {
-            display: none;
-        }
-
-    </style>
-    <style>
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --theme: rgb(29, 30, 32);
-                --entry: rgb(46, 46, 51);
-                --primary: rgb(218, 218, 219);
-                --secondary: rgb(155, 156, 157);
-                --tertiary: rgb(65, 66, 68);
-                --content: rgb(196, 196, 197);
-                --code-block-bg: rgb(46, 46, 51);
-                --code-bg: rgb(55, 56, 62);
-                --border: rgb(51, 51, 51);
-            }
-
-            .list {
-                background: var(--theme);
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
-            }
-
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
-            }
-        }
-
-    </style>
-</noscript><meta property="og:url" content="https://blog.nelettech.com/posts/2025/06/powerappslooping-marquee-text/">
-  <meta property="og:site_name" content="Telen&#39;s Blog">
-  <meta property="og:title" content="Power Canvas App: Looping marquee text">
-  <meta property="og:description" content="Ever wanted to add dynamic content to your Power Apps to highlight key information?
+Text= "While Montaigne&#39;s philosophy was admired and copied in France, none of his most immediate disciples tried to write essays."'><meta name=author content="Telen Wang"><link rel=canonical href=https://blog.nelettech.com/posts/2025/06/powerappslooping-marquee-text/><meta name=google-site-verification content="0FquDNl2aNHqUT71m0SBl-q8Hi22fphgj-JdMuH8fUY"><link crossorigin=anonymous href=/assets/css/stylesheet.6da9a63d25a9608bca2f7f907a030e887a7dd3c3f3918e4cc113129361414bda.css integrity="sha256-bammPSWpYIvKL3+QegMOiHp908PzkY5MwRMSk2FBS9o=" rel="preload stylesheet" as=style><link rel=icon href=https://blog.nelettech.com/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://blog.nelettech.com/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://blog.nelettech.com/favicon-32x32.png><link rel=apple-touch-icon href=https://blog.nelettech.com/apple-touch-icon.png><link rel=mask-icon href=https://blog.nelettech.com/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><link rel=alternate hreflang=en href=https://blog.nelettech.com/posts/2025/06/powerappslooping-marquee-text/><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--code-block-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><meta property="og:url" content="https://blog.nelettech.com/posts/2025/06/powerappslooping-marquee-text/"><meta property="og:site_name" content="Telen's Blog"><meta property="og:title" content="Power Canvas App: Looping marquee text"><meta property="og:description" content='Ever wanted to add dynamic content to your Power Apps to highlight key information?
 This article I will explorer an approach for looping marquee text for a text input control.
 The demonstration use Authoring Version: 3.25061.7,and enabled ‘Modern controls and themes’.
 Effect first:
 Prepare the app.
 1. Insert controls in a blank screen： One text label control: TextCanvas1
-Text= &#34;While Montaigne&#39;s philosophy was admired and copied in France, none of his most immediate disciples tried to write essays.&#34;">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-06-14T10:00:00+02:00">
-    <meta property="article:modified_time" content="2025-06-14T10:00:00+02:00">
-    <meta property="article:tag" content="Power Canvas App">
-    <meta property="article:tag" content="Function">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Power Canvas App: Looping marquee text">
-<meta name="twitter:description" content="Ever wanted to add dynamic content to your Power Apps to highlight key information?
+Text= "While Montaigne&#39;s philosophy was admired and copied in France, none of his most immediate disciples tried to write essays."'><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-06-14T10:00:00+02:00"><meta property="article:modified_time" content="2025-06-14T10:00:00+02:00"><meta property="article:tag" content="Power Canvas App"><meta property="article:tag" content="Function"><meta name=twitter:card content="summary"><meta name=twitter:title content="Power Canvas App: Looping marquee text"><meta name=twitter:description content='Ever wanted to add dynamic content to your Power Apps to highlight key information?
 This article I will explorer an approach for looping marquee text for a text input control.
 The demonstration use Authoring Version: 3.25061.7,and enabled &lsquo;Modern controls and themes&rsquo;.
 
@@ -97,293 +27,33 @@ Prepare the app.
 
 
 One text label control: TextCanvas1
-Text= &quot;While Montaigne&#39;s philosophy was admired and copied in France, none of his most immediate disciples tried to write essays.&quot;">
-
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://blog.nelettech.com/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Power Canvas App: Looping marquee text",
-      "item": "https://blog.nelettech.com/posts/2025/06/powerappslooping-marquee-text/"
-    }
-  ]
-}
-</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Power Canvas App: Looping marquee text",
-  "name": "Power Canvas App: Looping marquee text",
-  "description": "Ever wanted to add dynamic content to your Power Apps to highlight key information?\nThis article I will explorer an approach for looping marquee text for a text input control.\nThe demonstration use Authoring Version: 3.25061.7,and enabled \u0026lsquo;Modern controls and themes\u0026rsquo;.\nEffect first:\nPrepare the app.\n1. Insert controls in a blank screen： One text label control: TextCanvas1\nText= \u0026quot;While Montaigne's philosophy was admired and copied in France, none of his most immediate disciples tried to write essays.\u0026quot;\n",
-  "keywords": [
-    "Power Canvas app", "function"
-  ],
-  "articleBody": "Ever wanted to add dynamic content to your Power Apps to highlight key information?\nThis article I will explorer an approach for looping marquee text for a text input control.\nThe demonstration use Authoring Version: 3.25061.7,and enabled ‘Modern controls and themes’.\nEffect first:\nPrepare the app.\n1. Insert controls in a blank screen： One text label control: TextCanvas1\nText= \"While Montaigne's philosophy was admired and copied in France, none of his most immediate disciples tried to write essays.\"\nOne label control: TextInputCanvas1, which displays the text dynamically.\nTimer control，which is used for looping.\n2. Use Left() 和Right() to construct the dynamic content. How to construct dynamic text box content? My first thought is to combine Left() and Right() to make it.\nReference article ：Left, Mid, and Right functions\nThose two function have two main usage，one for string，another one for Single Column Table . Here we use the one for string.\nSyntax:\nLeft( String, NumberOfCharacters ) 和 Right( String, NumberOfCharacters )\nIn order to construct dynamic content，Left() +Right() should be equal to TextCanvas1.Text， so the length of the string/text will be our target.\nAnd to get dynamic text，here we need timer control to manipulate strings.\nTimer: The default duration value of this control is 60000，as is 60 s.\nWe can set duration’s value to equal the length of the text and multiple 100, meanwhile set repeat = true.\nLen(TextCanvas1.Text)*100 Now our Right formula is：\nRight( TextCanvas1.Text, Len(TextCanvas1.Text) - Timer3.Value/100 ) The same as，Left formula：\nLeft( TextCanvas1.Text, Timer3.Value / 100 ) Combine them together and assign it to TextInputCanvas1,Value =:\nRight( TextCanvas1.Text, Len(TextCanvas1.Text) - Timer3.Value/100 ) \u0026 \" \" //add some spaces for buffer \u0026 Left( TextCanvas1.Text, Timer3.Value / 100 ) 3. Use mid() and Mod() to build the content Mid( String, StartingPosition [, NumberOfCharacters ] )\nMod( Number, Divisor )\nWe knew from previous that we can construct*Timer1*.Value / 100 \u003c= Len(*TextCanvas1*.Text).\nSo：\nMod(Timer1.Value / 100, Len(TextCanvas1.Text)+1 ) The value of this formula will always be less than or equal to the length of the given string.\nConsidering that the second parameter of Mid() is at least 1, we introduce the Max() function.\nMid( TextCanvas1.Text \u0026 \" \" \u0026 TextCanvas1.Text, //duplicate with space buffer Max(1, Mod(Timer1.Value / 100, Len(TextCanvas1.Text)+1 )), 50 //can be ignored. ) This one’s effect：\nSummary： In general, the rendering effect is not smooth enough. The scenario I can think of is probably putting a continuously scrolling notification at the top of an app.\n",
-  "wordCount" : "406",
-  "inLanguage": "en",
-  "datePublished": "2025-06-14T10:00:00+02:00",
-  "dateModified": "2025-06-14T10:00:00+02:00",
-  "author":{
-    "@type": "Person",
-    "name": "Telen Wang"
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://blog.nelettech.com/posts/2025/06/powerappslooping-marquee-text/"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Telen's Blog",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://blog.nelettech.com/favicon.ico"
-    }
-  }
-}
-</script>
-</head>
-
-<body class="" id="top">
-<script>
-    if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
-    } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
-    }
-
-</script>
-
-<header class="header">
-    <nav class="nav">
-        <div class="logo">
-            <a href="https://blog.nelettech.com/" accesskey="h" title="Telen&#39;s Blog (Alt + H)">Telen&#39;s Blog</a>
-            <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                </button>
-                <ul class="lang-switch"><li>|</li>
-                    <li>
-                        <a href="https://blog.nelettech.com/profilemode/" title="Profilemode"
-                            aria-label="Profilemode">Profilemode</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <ul id="menu">
-            <li>
-                <a href="https://blog.nelettech.com/archives" title="Archive">
-                    <span>Archive</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://blog.nelettech.com/search/" title="Search">
-                    <span>Search</span>
-                </a>
-            </li>
-            <li>
-                <a href="https://blog.nelettech.com/tags/" title="Tags">
-                    <span>Tags</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-<main class="main">
-
-<article class="post-single">
-  <header class="post-header">
-    
-    <h1 class="post-title entry-hint-parent">
-      Power Canvas App: Looping marquee text
-    </h1>
-    <div class="post-meta"><span title='2025-06-14 10:00:00 +0200 CEST'>June 14, 2025</span>&nbsp;·&nbsp;Telen Wang
-
-</div>
-  </header> 
-  <div class="post-content"><p>Ever wanted to add dynamic content to your Power Apps to highlight key information?</p>
-<p>This article I will explorer an approach for looping marquee text for a text input control.</p>
-<p>The demonstration use Authoring Version: 3.25061.7,and enabled &lsquo;Modern controls and themes&rsquo;.</p>
-<p><img alt="image-20250614154416783" loading="lazy" src="/image-20250614154416783.png"></p>
-<p>Effect first:</p>
-<p><img loading="lazy" src="/loopingmarquee3.gif"></p>
-<p>Prepare the app.</p>
-<h3 id="1-insert-controls-in-a-blank-screen">1. Insert controls in a blank screen：<a hidden class="anchor" aria-hidden="true" href="#1-insert-controls-in-a-blank-screen">#</a></h3>
-<ul>
-<li>
-<p>One text label control: TextCanvas1</p>
-<p>Text= <code>&quot;While Montaigne's philosophy was admired and copied in France, none of his most immediate disciples tried to write essays.&quot;</code></p>
-</li>
-<li>
-<p>One label control: TextInputCanvas1, which displays the text dynamically.</p>
-</li>
-<li>
-<p>Timer control，which is used for looping.</p>
-</li>
-</ul>
-<h3 id="2-use-left-和right-to-construct-the-dynamic-content">2. Use <em><strong>Left()</strong></em> 和<em><strong>Right()</strong></em> to construct the dynamic content.<a hidden class="anchor" aria-hidden="true" href="#2-use-left-和right-to-construct-the-dynamic-content">#</a></h3>
-<p>How to construct dynamic text box content? My first thought is to combine <em><strong>Left()</strong></em>  and <em><strong>Right()</strong></em> to make it.</p>
-<p>Reference article ：<a href="https://learn.microsoft.com/en-us/power-platform/power-fx/reference/function-left-mid-right">Left, Mid, and Right functions</a></p>
-<p>Those two function have two main usage，one for string，another one for Single Column Table . Here we use the one for string.</p>
-<p>Syntax:</p>
-<p><strong>Left</strong>( <em>String</em>, <em>NumberOfCharacters</em> ) 和 <strong>Right</strong>( <em>String</em>, <em>NumberOfCharacters</em> )</p>
-<p>In order to construct dynamic content，<em><strong>Left()</strong></em> +<em><strong>Right()</strong></em>  should be equal to  TextCanvas1.Text， so the length of the string/text will be our target.</p>
-<p>And to get dynamic text，here we need timer control to manipulate strings.</p>
-<p><a href="https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/controls/control-timer">Timer</a>:  The default duration value of this control is 60000，as is 60 s.</p>
-<p>We can set duration&rsquo;s value to equal the length of the text and multiple 100, meanwhile set repeat = true.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">Len(TextCanvas</span><span class="mi">1</span><span class="err">.Text)*</span><span class="mi">100</span>
-</span></span></code></pre></div><p>Now  our <strong>Right</strong> formula is：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">Right(</span>
-</span></span><span class="line"><span class="cl">        <span class="err">TextCanvas</span><span class="mi">1</span><span class="err">.Text,</span>
-</span></span><span class="line"><span class="cl">        <span class="err">Len(TextCanvas</span><span class="mi">1</span><span class="err">.Text)</span> <span class="err">-</span> <span class="err">Timer</span><span class="mi">3</span><span class="err">.Value/</span><span class="mi">100</span>
-</span></span><span class="line"><span class="cl"><span class="err">)</span>
-</span></span></code></pre></div><p>The same as，<strong>Left</strong> formula：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"> <span class="err">Left(</span>
-</span></span><span class="line"><span class="cl">    <span class="err">TextCanvas</span><span class="mi">1</span><span class="err">.Text,</span>
-</span></span><span class="line"><span class="cl">    <span class="err">Timer</span><span class="mi">3</span><span class="err">.Value</span> <span class="err">/</span> <span class="mi">100</span>
-</span></span><span class="line"><span class="cl"><span class="err">)</span>
-</span></span></code></pre></div><p>Combine them together and assign it to TextInputCanvas1,Value =:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">Right(</span>
-</span></span><span class="line"><span class="cl">        <span class="err">TextCanvas</span><span class="mi">1</span><span class="err">.Text,</span>
-</span></span><span class="line"><span class="cl">        <span class="err">Len(TextCanvas</span><span class="mi">1</span><span class="err">.Text)</span> <span class="err">-</span> <span class="err">Timer</span><span class="mi">3</span><span class="err">.Value/</span><span class="mi">100</span>
-</span></span><span class="line"><span class="cl"><span class="err">)</span> <span class="err">&amp;</span> <span class="s2">&#34;        &#34;</span> <span class="c1">//add some spaces for buffer
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">&amp;</span> <span class="err">Left(</span>
-</span></span><span class="line"><span class="cl">    <span class="err">TextCanvas</span><span class="mi">1</span><span class="err">.Text,</span>
-</span></span><span class="line"><span class="cl">    <span class="err">Timer</span><span class="mi">3</span><span class="err">.Value</span> <span class="err">/</span> <span class="mi">100</span>
-</span></span><span class="line"><span class="cl"><span class="err">)</span>
-</span></span></code></pre></div><h3 id="3-use-mid-and-mod-to-build-the-content">3. Use <em><strong>mid()</strong></em> and <em><strong>Mod()</strong></em> to build the content<a hidden class="anchor" aria-hidden="true" href="#3-use-mid-and-mod-to-build-the-content">#</a></h3>
-<p><strong>Mid</strong>( <em>String</em>, <em>StartingPosition</em> [, <em>NumberOfCharacters</em> ] )</p>
-<p><strong>Mod</strong>( <em>Number</em>, <em>Divisor</em> )</p>
-<p>We knew from previous that we can construct<code>*Timer1*.Value / 100</code> &lt;= <code>Len(*TextCanvas1*.Text)</code>.</p>
-<p>So：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="err">Mod(Timer</span><span class="mi">1</span><span class="err">.Value</span> <span class="err">/</span> <span class="mi">100</span><span class="err">,</span> <span class="err">Len(TextCanvas</span><span class="mi">1</span><span class="err">.Text)+</span><span class="mi">1</span> <span class="err">)</span>
-</span></span></code></pre></div><p>The value of this formula will always be less than or equal to the length of the given string.</p>
-<p>Considering that the second parameter of <em><strong>Mid()</strong></em> is at least 1, we introduce the <em><strong>Max()</strong></em> function.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"> <span class="err">Mid(</span>
-</span></span><span class="line"><span class="cl">    <span class="err">TextCanvas</span><span class="mi">1</span><span class="err">.Text</span> <span class="err">&amp;</span> <span class="s2">&#34;  &#34;</span> <span class="err">&amp;</span> <span class="err">TextCanvas</span><span class="mi">1</span><span class="err">.Text,</span> <span class="c1">//duplicate with space buffer
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="err">Max(</span><span class="mi">1</span><span class="err">,</span> <span class="err">Mod(Timer</span><span class="mi">1</span><span class="err">.Value</span> <span class="err">/</span> <span class="mi">100</span><span class="err">,</span> <span class="err">Len(TextCanvas</span><span class="mi">1</span><span class="err">.Text)+</span><span class="mi">1</span> <span class="err">)),</span> 
-</span></span><span class="line"><span class="cl">    <span class="mi">50</span> <span class="c1">//can be ignored.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="err">)</span>
-</span></span></code></pre></div><p>This one&rsquo;s effect：</p>
-<p><img loading="lazy" src="/loopingmarquee2.gif"></p>
-<h3 id="summary">Summary：<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h3>
-<p>In general, the rendering effect is not smooth enough. The scenario I can think of is probably putting a continuously scrolling notification at the top of an app.</p>
-
-
-  </div>
-
-  <footer class="post-footer">
-    <ul class="post-tags">
-      <li><a href="https://blog.nelettech.com/tags/power-canvas-app/">Power Canvas App</a></li>
-      <li><a href="https://blog.nelettech.com/tags/function/">Function</a></li>
-    </ul>
-  </footer>
-</article>
-    </main>
-    
-<footer class="footer">
-        <span>&copy; 2025 <a href="https://blog.nelettech.com/">Telen&#39;s Blog</a></span> · 
-
-    <span>
-        Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
-        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
-    </span>
-    <span id="counter_dev">
-        👀 Total visits: <span id="counter_dev"></span>
-      </span>
-      <script src="https://cdn.counter.dev/script.js" data-id="38698e15-4f27-4964-b4a4-87fa30e2b693" data-utcoffset="2"></script> 
-</footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
-    </svg>
-</a>
-
-<script>
-    let menu = document.getElementById('menu')
-    if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
-        menu.onscroll = function () {
-            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
-        }
-    }
-
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            var id = this.getAttribute("href").substr(1);
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
-                    behavior: "smooth"
-                });
-            } else {
-                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
-            }
-            if (id === "top") {
-                history.replaceState(null, null, " ");
-            } else {
-                history.pushState(null, null, `#${id}`);
-            }
-        });
-    });
-
-</script>
-<script>
-    var mybutton = document.getElementById("top-link");
-    window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
-        } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
-        }
-    };
-
-</script>
-<script>
-    document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
-            localStorage.setItem("pref-theme", 'light');
-        } else {
-            document.body.classList.add('dark');
-            localStorage.setItem("pref-theme", 'dark');
-        }
-    })
-
-</script>
-</body>
-
-</html>
+Text= "While Montaigne&#39;s philosophy was admired and copied in France, none of his most immediate disciples tried to write essays."'><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://blog.nelettech.com/posts/"},{"@type":"ListItem","position":2,"name":"Power Canvas App: Looping marquee text","item":"https://blog.nelettech.com/posts/2025/06/powerappslooping-marquee-text/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Power Canvas App: Looping marquee text","name":"Power Canvas App: Looping marquee text","description":"Ever wanted to add dynamic content to your Power Apps to highlight key information?\nThis article I will explorer an approach for looping marquee text for a text input control.\nThe demonstration use Authoring Version: 3.25061.7,and enabled \u0026lsquo;Modern controls and themes\u0026rsquo;.\nEffect first:\nPrepare the app.\n1. Insert controls in a blank screen： One text label control: TextCanvas1\nText= \u0026quot;While Montaigne's philosophy was admired and copied in France, none of his most immediate disciples tried to write essays.\u0026quot;\n","keywords":["Power Canvas app","function"],"articleBody":"Ever wanted to add dynamic content to your Power Apps to highlight key information?\nThis article I will explorer an approach for looping marquee text for a text input control.\nThe demonstration use Authoring Version: 3.25061.7,and enabled ‘Modern controls and themes’.\nEffect first:\nPrepare the app.\n1. Insert controls in a blank screen： One text label control: TextCanvas1\nText= \"While Montaigne's philosophy was admired and copied in France, none of his most immediate disciples tried to write essays.\"\nOne label control: TextInputCanvas1, which displays the text dynamically.\nTimer control，which is used for looping.\n2. Use Left() 和Right() to construct the dynamic content. How to construct dynamic text box content? My first thought is to combine Left() and Right() to make it.\nReference article ：Left, Mid, and Right functions\nThose two function have two main usage，one for string，another one for Single Column Table . Here we use the one for string.\nSyntax:\nLeft( String, NumberOfCharacters ) 和 Right( String, NumberOfCharacters )\nIn order to construct dynamic content，Left() +Right() should be equal to TextCanvas1.Text， so the length of the string/text will be our target.\nAnd to get dynamic text，here we need timer control to manipulate strings.\nTimer: The default duration value of this control is 60000，as is 60 s.\nWe can set duration’s value to equal the length of the text and multiple 100, meanwhile set repeat = true.\nLen(TextCanvas1.Text)*100 Now our Right formula is：\nRight( TextCanvas1.Text, Len(TextCanvas1.Text) - Timer3.Value/100 ) The same as，Left formula：\nLeft( TextCanvas1.Text, Timer3.Value / 100 ) Combine them together and assign it to TextInputCanvas1,Value =:\nRight( TextCanvas1.Text, Len(TextCanvas1.Text) - Timer3.Value/100 ) \u0026 \" \" //add some spaces for buffer \u0026 Left( TextCanvas1.Text, Timer3.Value / 100 ) 3. Use mid() and Mod() to build the content Mid( String, StartingPosition [, NumberOfCharacters ] )\nMod( Number, Divisor )\nWe knew from previous that we can construct*Timer1*.Value / 100 \u003c= Len(*TextCanvas1*.Text).\nSo：\nMod(Timer1.Value / 100, Len(TextCanvas1.Text)+1 ) The value of this formula will always be less than or equal to the length of the given string.\nConsidering that the second parameter of Mid() is at least 1, we introduce the Max() function.\nMid( TextCanvas1.Text \u0026 \" \" \u0026 TextCanvas1.Text, //duplicate with space buffer Max(1, Mod(Timer1.Value / 100, Len(TextCanvas1.Text)+1 )), 50 //can be ignored. ) This one’s effect：\nSummary： In general, the rendering effect is not smooth enough. The scenario I can think of is probably putting a continuously scrolling notification at the top of an app.\n","wordCount":"406","inLanguage":"en","datePublished":"2025-06-14T10:00:00+02:00","dateModified":"2025-06-14T10:00:00+02:00","author":{"@type":"Person","name":"Telen Wang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://blog.nelettech.com/posts/2025/06/powerappslooping-marquee-text/"},"publisher":{"@type":"Organization","name":"Telen's Blog","logo":{"@type":"ImageObject","url":"https://blog.nelettech.com/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://blog.nelettech.com/ accesskey=h title="Telen's Blog (Alt + H)">Telen's Blog</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)" aria-label="Toggle theme"><svg id="moon" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://blog.nelettech.com/archives title=Archive><span>Archive</span></a></li><li><a href=https://blog.nelettech.com/search/ title=Search><span>Search</span></a></li><li><a href=https://blog.nelettech.com/tags/ title=Tags><span>Tags</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class="post-title entry-hint-parent">Power Canvas App: Looping marquee text</h1><div class=post-meta><span title='2025-06-14 10:00:00 +0200 CEST'>June 14, 2025</span>&nbsp;·&nbsp;Telen Wang</div></header><div class=post-content><p>Ever wanted to add dynamic content to your Power Apps to highlight key information?</p><p>This article I will explorer an approach for looping marquee text for a text input control.</p><p>The demonstration use Authoring Version: 3.25061.7,and enabled &lsquo;Modern controls and themes&rsquo;.</p><p><img alt=image-20250614154416783 loading=lazy src=/image-20250614154416783.png></p><p>Effect first:</p><p><img loading=lazy src=/loopingmarquee3.gif></p><p>Prepare the app.</p><h3 id=1-insert-controls-in-a-blank-screen>1. Insert controls in a blank screen：<a hidden class=anchor aria-hidden=true href=#1-insert-controls-in-a-blank-screen>#</a></h3><ul><li><p>One text label control: TextCanvas1</p><p>Text= <code>"While Montaigne's philosophy was admired and copied in France, none of his most immediate disciples tried to write essays."</code></p></li><li><p>One label control: TextInputCanvas1, which displays the text dynamically.</p></li><li><p>Timer control，which is used for looping.</p></li></ul><h3 id=2-use-left-和right-to-construct-the-dynamic-content>2. Use <em><strong>Left()</strong></em> 和<em><strong>Right()</strong></em> to construct the dynamic content.<a hidden class=anchor aria-hidden=true href=#2-use-left-和right-to-construct-the-dynamic-content>#</a></h3><p>How to construct dynamic text box content? My first thought is to combine <em><strong>Left()</strong></em> and <em><strong>Right()</strong></em> to make it.</p><p>Reference article ：<a href=https://learn.microsoft.com/en-us/power-platform/power-fx/reference/function-left-mid-right>Left, Mid, and Right functions</a></p><p>Those two function have two main usage，one for string，another one for Single Column Table . Here we use the one for string.</p><p>Syntax:</p><p><strong>Left</strong>( <em>String</em>, <em>NumberOfCharacters</em> ) 和 <strong>Right</strong>( <em>String</em>, <em>NumberOfCharacters</em> )</p><p>In order to construct dynamic content，<em><strong>Left()</strong></em> +<em><strong>Right()</strong></em> should be equal to TextCanvas1.Text， so the length of the string/text will be our target.</p><p>And to get dynamic text，here we need timer control to manipulate strings.</p><p><a href=https://learn.microsoft.com/en-us/power-apps/maker/canvas-apps/controls/control-timer>Timer</a>: The default duration value of this control is 60000，as is 60 s.</p><p>We can set duration&rsquo;s value to equal the length of the text and multiple 100, meanwhile set repeat = true.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=err>Len(TextCanvas</span><span class=mi>1</span><span class=err>.Text)*</span><span class=mi>100</span>
+</span></span></code></pre></div><p>Now our <strong>Right</strong> formula is：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=err>Right(</span>
+</span></span><span class=line><span class=cl>        <span class=err>TextCanvas</span><span class=mi>1</span><span class=err>.Text,</span>
+</span></span><span class=line><span class=cl>        <span class=err>Len(TextCanvas</span><span class=mi>1</span><span class=err>.Text)</span> <span class=err>-</span> <span class=err>Timer</span><span class=mi>3</span><span class=err>.Value/</span><span class=mi>100</span>
+</span></span><span class=line><span class=cl><span class=err>)</span>
+</span></span></code></pre></div><p>The same as，<strong>Left</strong> formula：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl> <span class=err>Left(</span>
+</span></span><span class=line><span class=cl>    <span class=err>TextCanvas</span><span class=mi>1</span><span class=err>.Text,</span>
+</span></span><span class=line><span class=cl>    <span class=err>Timer</span><span class=mi>3</span><span class=err>.Value</span> <span class=err>/</span> <span class=mi>100</span>
+</span></span><span class=line><span class=cl><span class=err>)</span>
+</span></span></code></pre></div><p>Combine them together and assign it to TextInputCanvas1,Value =:</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=err>Right(</span>
+</span></span><span class=line><span class=cl>        <span class=err>TextCanvas</span><span class=mi>1</span><span class=err>.Text,</span>
+</span></span><span class=line><span class=cl>        <span class=err>Len(TextCanvas</span><span class=mi>1</span><span class=err>.Text)</span> <span class=err>-</span> <span class=err>Timer</span><span class=mi>3</span><span class=err>.Value/</span><span class=mi>100</span>
+</span></span><span class=line><span class=cl><span class=err>)</span> <span class=err>&amp;</span> <span class=s2>&#34;        &#34;</span> <span class=c1>//add some spaces for buffer
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=err>&amp;</span> <span class=err>Left(</span>
+</span></span><span class=line><span class=cl>    <span class=err>TextCanvas</span><span class=mi>1</span><span class=err>.Text,</span>
+</span></span><span class=line><span class=cl>    <span class=err>Timer</span><span class=mi>3</span><span class=err>.Value</span> <span class=err>/</span> <span class=mi>100</span>
+</span></span><span class=line><span class=cl><span class=err>)</span>
+</span></span></code></pre></div><h3 id=3-use-mid-and-mod-to-build-the-content>3. Use <em><strong>mid()</strong></em> and <em><strong>Mod()</strong></em> to build the content<a hidden class=anchor aria-hidden=true href=#3-use-mid-and-mod-to-build-the-content>#</a></h3><p><strong>Mid</strong>( <em>String</em>, <em>StartingPosition</em> [, <em>NumberOfCharacters</em> ] )</p><p><strong>Mod</strong>( <em>Number</em>, <em>Divisor</em> )</p><p>We knew from previous that we can construct<code>*Timer1*.Value / 100</code> &lt;= <code>Len(*TextCanvas1*.Text)</code>.</p><p>So：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl><span class=err>Mod(Timer</span><span class=mi>1</span><span class=err>.Value</span> <span class=err>/</span> <span class=mi>100</span><span class=err>,</span> <span class=err>Len(TextCanvas</span><span class=mi>1</span><span class=err>.Text)+</span><span class=mi>1</span> <span class=err>)</span>
+</span></span></code></pre></div><p>The value of this formula will always be less than or equal to the length of the given string.</p><p>Considering that the second parameter of <em><strong>Mid()</strong></em> is at least 1, we introduce the <em><strong>Max()</strong></em> function.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-json data-lang=json><span class=line><span class=cl> <span class=err>Mid(</span>
+</span></span><span class=line><span class=cl>    <span class=err>TextCanvas</span><span class=mi>1</span><span class=err>.Text</span> <span class=err>&amp;</span> <span class=s2>&#34;  &#34;</span> <span class=err>&amp;</span> <span class=err>TextCanvas</span><span class=mi>1</span><span class=err>.Text,</span> <span class=c1>//duplicate with space buffer
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=err>Max(</span><span class=mi>1</span><span class=err>,</span> <span class=err>Mod(Timer</span><span class=mi>1</span><span class=err>.Value</span> <span class=err>/</span> <span class=mi>100</span><span class=err>,</span> <span class=err>Len(TextCanvas</span><span class=mi>1</span><span class=err>.Text)+</span><span class=mi>1</span> <span class=err>)),</span> 
+</span></span><span class=line><span class=cl>    <span class=mi>50</span> <span class=c1>//can be ignored.
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=err>)</span>
+</span></span></code></pre></div><p>This one&rsquo;s effect：</p><p><img loading=lazy src=/loopingmarquee2.gif></p><h3 id=summary>Summary：<a hidden class=anchor aria-hidden=true href=#summary>#</a></h3><p>In general, the rendering effect is not smooth enough. The scenario I can think of is probably putting a continuously scrolling notification at the top of an app.</p></div><footer class=post-footer><ul class=post-tags><li><a href=https://blog.nelettech.com/tags/power-canvas-app/>Power Canvas App</a></li><li><a href=https://blog.nelettech.com/tags/function/>Function</a></li></ul></footer></article></main><footer class=footer><span>&copy; 2025 <a href=https://blog.nelettech.com/>Telen's Blog</a></span> ·
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a>
+</span><span id=counter_dev>👀 Total visits: <span id=counter_dev></span>
+</span><script src=https://cdn.counter.dev/script.js data-id=38698e15-4f27-4964-b4a4-87fa30e2b693 data-utcoffset=2></script></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg>
+</a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>

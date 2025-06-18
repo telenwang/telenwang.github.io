@@ -13,9 +13,8 @@ pygmentsUseClasses: true
 mainsections: ["posts", "papermod"]
 
 minify:
-  disableXML: true
-  # minifyOutput: true
-    
+  minifyOutput: true
+
 languages:
   en:
     languageName: "English"
@@ -36,22 +35,8 @@ languages:
           url: tags/
           weight: 10
 
-  profileMode:
-    enabled: true
-    bio: "0, 1 and UNKNOWN"
-    title: Not Finish
-    imageUrl: "#"
-    imageTitle: my image
-    # imageWidth: 120
-    # imageHeight: 120
-    buttons:
-      - name: Archives
-        url: archives
-      - name: Tags
-        url: tags
-
 params:
-  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  env: production
   author: "Telen Wang"
   analytics:
     google:
@@ -60,7 +45,7 @@ params:
   homeInfoParams:
     Title: "Hej/你好."
     Content: >
-      Welcom to my blog!
+      Welcome to my blog!
 
   socialIcons:
     - name: LinkedIn
@@ -69,7 +54,22 @@ params:
     - name: WeChat
       title: Check My Wechat channel
       url: "https://mp.weixin.qq.com/?lang=en_US&token="
+
 sitemap:
   changefreq: Weekly
   priority: 0.5
   filename: sitemap.xml
+
+outputFormats:
+  Sitemap:
+    mediaType: application/xml
+    baseName: sitemap
+    isPlainText: false
+    notAlternative: true
+    rel: sitemap
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - Sitemap
