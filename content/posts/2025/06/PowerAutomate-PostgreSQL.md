@@ -16,7 +16,7 @@ authorURL: "https://www.linkedin.com/in/telenwang"
 
 Recently, when using Power Automate to connect to PostgreSQL 17 through a local gateway, it prompted me to install Npqsql 4.0.17.0 or earlier.
 
-![](/Screenshot 2025-06-01 125642.png)
+![](/'Screenshot2025-06-01125642.png)
 
 I installed 4.0.17.0 as prompted, but still got the same error. I also replaced all the DLL files under the local gateway program. Nothing helped. 
 
@@ -28,10 +28,10 @@ I checked the official website:
 
 Well, that's inconsistency. 
 
-![](/Screenshot 2025-06-01 130937.png)
+![](/'Screenshot2025-06-01130937.png)
 
 Got it work
 
-![](/Screenshot 2025-06-01 131035.png)
+![](/Screenshot2025-06-01131035.png)
 
 I hope this helps others who encounter similar errors.
