@@ -69,3 +69,7 @@ params:
     - name: WeChat
       title: Check My Wechat channel
       url: "https://mp.weixin.qq.com/?lang=en_US&token="
+sitemap:
+  changefreq: Weekly
+  priority: 0.5
+  filename: sitemap.xml
