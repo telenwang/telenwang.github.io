@@ -1,9 +1,7 @@
 ---
 title: "Power Automate: SharePoint List to populate Word Template"
-date: 2025-06-06
 draft: false
 date: 2025-06-06T10:00:00+02:00
-draft: false
 tags:
   - Power Automate
   - SharePoint
