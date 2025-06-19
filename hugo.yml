@@ -41,7 +41,7 @@ params:
   analytics:
     google:
       SiteVerificationTag: "0FquDNl2aNHqUT71m0SBl-q8Hi22fphgj-JdMuH8fUY"
-
+  Description: "Telen’s technical blog offers hands-on tutorials and insights on Microsoft Power Platform, Power Apps, SQL Server integration, and data automation， etc."
   homeInfoParams:
     Title: "Hej/你好."
     Content: >
