@@ -11,7 +11,7 @@ categories:
   - Tutorials
 sitemap:
   priority: 0.8
-description: "Ever wanted to add dynamic content to your Power Apps to highlight key information ? One approach is for you!"
+metaDescription: "Ever wanted to add dynamic content to your Power Apps to highlight key information ? One approach is for you!"
 ---
 
 Ever wanted to add dynamic content to your Power Apps to highlight key information?

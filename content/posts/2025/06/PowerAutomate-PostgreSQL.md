@@ -11,8 +11,8 @@ sitemap:
   priority: 0.7
   changefreq: weekly
 author: "Telen Wang"
-authorURL: "https://www.linkedin.com/in/telenwang"
-description: "Got problem when use PostgreSQL in Power Automate,requires Npqsql 4.0.17.0 to be installed ? This article may give you a lead for solving the problem. "
+authorURL: "https://blog.nelettech.com"
+metaDescription: "Got problem when use PostgreSQL in Power Automate,requires Npqsql 4.0.17.0 to be installed ? This article may give you a lead for solving the problem. "
 ---
 
 Recently, when using Power Automate to connect to PostgreSQL 17 through a local gateway, it prompted me to install Npqsql 4.0.17.0 or earlier.

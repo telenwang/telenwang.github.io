@@ -6,13 +6,23 @@
 <html lang="{{ site.Language }}" dir="{{ .Language.LanguageDirection | default "auto" }}">
 
 <head>
-    {{- partial "head.html" . }}
-    {{- if .IsHome -}}
- <meta name="description" content="{{ site.Params.Description }}" />
-{{- else -}}
- <meta name="description" content="{{ .Params.Description }}" />
-{{- end }}
-</head>
+    {{ partial "head.html" . }}
+  
+    {{ if .IsHome }}
+      {{ with .Site.Params.description }}
+        <meta name="description" content="{{ . | htmlEscape }}" />
+      {{ end }}
+    {{ else }}
+      {{ with .Params.description }}
+        <!-- page-specific description -->
+        <meta name="description" content="{{ . | htmlEscape }}" />
+      {{ else }}
+        <!-- fallback to auto-generated summary -->
+        <meta name="description" content="{{ .Summary | plainify | htmlEscape }}" />
+      {{ end }}
+    {{ end }}
+  </head>
+  
 
 <body class="
 {{- if (or (ne .Kind `page` ) (eq .Layout `archives`) (eq .Layout `search`)) -}}
