@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Sharepoint on Telen's Blog</title><link>https://blog.nelettech.com/categories/sharepoint/</link><description>Recent content in Sharepoint on Telen's Blog</description><generator>Hugo -- 0.145.0</generator><language>en</language><lastBuildDate>Thu, 10 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.nelettech.com/categories/sharepoint/index.xml" rel="self" type="application/rss+xml"/><item><title>How to get files from Azure blob to SharePoint via Power Automate</title><link>https://blog.nelettech.com/posts/2025/07/how-to-get-files-from-azure-blob/</link><pubDate>Thu, 10 Jul 2025 00:00:00 +0000</pubDate><guid>https://blog.nelettech.com/posts/2025/07/how-to-get-files-from-azure-blob/</guid><description>&lt;p>Sometimes you may want to get file from Azure Blob to your SharePoint Document library.&lt;/p>
+&lt;p>I will demonstrate a minimal Power Automate flow to achieve that.&lt;/p>
+&lt;p>Before you take action, make sure you have Azure blob account and proper access right.&lt;/p>
+&lt;p>Assume I have one root container, and two sub folders within it.&lt;/p>
+&lt;h2 id="initialize-variables-for-blob-account-and-the-root-container">Initialize variables for Blob account and the root container.&lt;/h2>
+&lt;p>&lt;img alt="image-20250710154141347" loading="lazy" src="https://blog.nelettech.com/image-20250710154141347.png">&lt;/p>
+&lt;p>&lt;img alt="image-20250710154159603" loading="lazy" src="https://blog.nelettech.com/image-20250710154159603.png">&lt;/p>
+&lt;h2 id="add-lists-blobs-v2">Add Lists blobs (V2).&lt;/h2>
+&lt;p>&lt;img alt="image-20250710154231293" loading="lazy" src="https://blog.nelettech.com/image-20250710154231293.png">&lt;/p>
+&lt;h2 id="add-for-each">Add For each.&lt;/h2>
+&lt;p>Select an output from previous steps = &lt;code>@outputs('Lists_blobs_(V2)')?['body/value']&lt;/code>.&lt;/p></description></item></channel></rss>
